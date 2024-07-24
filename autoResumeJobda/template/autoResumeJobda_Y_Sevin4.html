@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>이력서 자동완성</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/applicant.css">
+    <style>
+
+        #content {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            justify-items: center;
+            align-content: center;
+            padding-top: 30px;
+        }
+        /* 하트 버튼 설정 */
+        .heart {
+            width: 100px;
+            height: 100px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            outline: none;
+            position: relative;
+            transform-style: preserve-3d; /* 자식 요소들의 3D 효과 유지 */
+        }
+
+        /* 하트 버튼 그림자 효과 */
+        .heart::after {
+            content: '';
+            position: absolute;
+            border-radius: 100%;
+            left: 10%;
+            bottom: -20%;
+            width: 80%;
+            height: 20%;
+            background-color: hsl(334deg 30% 50% / 40%);
+            filter: blur(5px);
+            transform: scale(var(--scale));
+        }
+
+        /* SVG 기본 설정 */
+        .heart svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        /* 내부 래퍼 설정 */
+        .inner-wrapper {
+            width: 100%;
+            height: 100%;
+            transform: scale(var(--scale));
+            transition: 0.1s ease-out;
+            transform-style: preserve-3d;
+        }
+
+        /* 하트 스트로크 설정 */
+        .heart-stroke {
+            fill: none;
+            stroke: rgba(white, 1);
+            stroke-width: 20px;
+            stroke-dasharray: 300 1206;
+            stroke-linecap: round;
+        }
+
+        /* 하트 레이어 설정 */
+        .heart-layer {
+            transition: fill 0.3s ease-out;
+            fill: hsl(334deg var(--lightness) 50%);
+            stroke: hsl(334deg var(--lightness) 40%);
+            stroke-width: 12px;
+        }
+
+    </style>
+
+    <script>
+const urls = {
+    1: '../autoResumeJobda_Y_Sevin.html',
+    2: 'autoResumeJobda_Y_Sevin2.html',
+    3: 'autoResumeJobda_Y_Sevin3.html',
+    5: 'autoResumeJobda_Y_Sevin4.html'
+};
+
+function navigateToPage(step) {
+    const url = urls[step];
+    if (url) {
+        window.location.href = url; // 지정된 URL로 이동
+    } else {
+        console.error('Invalid step:', step);
+    }
+}
+    </script>
+
+</head>
+
+<body class="type-01">
+
+<div id="wrap">
+    <form id="frm" method="post" data-step="4" data-type="save">
+        <header id="header">
+            <h1 class="recruitNoticeTitle">[이력서 자동완성]</h1>
+            <nav id="tab">
+                <div><button type="button" onclick="navigateToPage(1)">기본정보</button></div>
+                <div><button type="button" onclick="navigateToPage(2)">학력/연구/경력/NCS</button></div>
+                <div><button type="button" onclick="navigateToPage(3)">어학/자격/기타</button></div>
+                <div class="active"><button type="button" onclick="navigateToPage(5)">최종제출</button></div>
+            </nav>
+        </header>
+
+    </form>
+
+    <div id="content">
+        <button class="heart">
+            <div class="inner-wrapper">
+                <svg class="heart-stroke" viewBox="0 0 500 430">
+                    <path d="M500 143.64C500 286.45 321.49 322.15 250.08 429.26C178.68 322.15 0.17 286.45 0.17 143.64C0.17 72.24 53.72 0.83 142.98 0.83C214.38 0.83 250.08 72.24 250.08 72.24C250.08 72.24 285.79 0.83 357.19 0.83C446.45 0.83 500 72.24 500 143.64Z"></path>
+                </svg>
+                <svg class="heart-shine" viewBox="0 0 500 430">
+                    <rect></rect>
+                </svg>
+            </div>
+        </button>
+        <h4 style="color: #fffefa;margin: 0;">하트는 만들었는데 쓸일이 없길래..ㅎㅅㅎ</h4>
+        <img src="../css/images/u_u.jfif">
+        <h3>Github: https://github.com/sebin1213</h3>
+    </div>
+
+    <script>
+    // 하트의 경로 길이 상수
+    const PATH_LENGTH = 1506;
+    // 하트의 레이어 개수 상수
+    const LAYERS = 20;
+    // 하트 레이어 간격 상수 (픽셀 단위)
+    const LAYER_GAP = 2;
+
+    // 최소값, 최대값 사이로 숫자 제한하는 함수 생성 (마우스 커서로 회전할때 경계를 벗어나지 않게하기위해)
+    const clamp = (min, max, n) => Math.min(max, Math.max(min, n));
+
+    // DOM 이벤트 관리
+    const useDocumentEvent = (event, handler) => {
+        const events = event.split(' ');
+        events.forEach(event => document.addEventListener(event, handler));
+        return () => events.forEach(event => document.removeEventListener(event, handler));
+    };
+
+    // 애니메이션 일시적인 데이터를 관리하는 함수
+    const usePerishable = () => {
+        // 클릭 이벤트에 따른 애니메이션 시작 정보 등이 포함
+        const items = [];
+        // 데이터의 유지 시간을 타임아웃으로 설정해서 자동으로 데이터
+        const timeouts = {};
+
+        const add = (delay, data) => {
+            const id = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+            items.push({ id, data });
+            // 지정된 시간 이후에 삭제되는 타임아웃 설정
+            timeouts[id] = setTimeout(() => {
+                const index = items.findIndex(item => item.id === id);
+                if (index !== -1) items.splice(index, 1);
+                delete timeouts[id];
+            }, delay);
+        };
+        return { items, add };
+    };
+
+    // 마우스 커서의 움직임에 따라 요소를 기울이는 함수
+    const useCursorTilt = ({ ref, tilt, bounds }) => {
+        // 초기 회전 값
+        const rotate = [-25, 25];
+
+        useDocumentEvent('mousemove', e => {
+            // 애니메이션 프레임 내에서 실행
+            requestAnimationFrame(() => {
+                // 요소의 위치 및 크기 정보를 가져옴
+                const { left, top, width, height } = ref.getBoundingClientRect();
+                // 마우스의 X, Y 좌표
+                const [x, y] = [e.clientX, e.clientY];
+                // bounds 값에 따라 영역을 설정하고, 기울기를 계산하여 회전 값에 적용
+                const rect = bounds ? { top: top - bounds, left: left - bounds, width: width + bounds * 2, height: height + bounds * 2 } : { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+                rotate[0] = (-(clamp(0, rect.height, y - rect.top) - (rect.height / 2)) / rect.height) * tilt;
+                rotate[1] = ((clamp(0, rect.width, x - rect.left) - (rect.width / 2)) / rect.width) * tilt;
+
+                // 각 하트 레이어에 회전 및 변환 효과 적용
+                const heartLayers = document.querySelectorAll('.heart-layer');
+                heartLayers.forEach((layer, i) => {
+                    layer.style.transform = `rotateX(${rotate[0]}deg) rotateY(${rotate[1]}deg) translateZ(${(i - (LAYERS / 2)) * LAYER_GAP}px)`;
+                });
+
+                // 하트 광택 요소에도 회전 및 변환 효과 적용
+                const heartShine = document.querySelector('.heart-shine');
+                heartShine.style.transform = `rotateX(${rotate[0]}deg) rotateY(${rotate[1]}deg) translateZ(${LAYERS * LAYER_GAP}px)`;
+            });
+        });
+        return rotate;
+    };
+
+    // 하트 모양의 경로를 생성하는 함수
+    const createHeartPath = () => {
+        // SVG 네임스페이스 URI
+        const svgNS = "http://www.w3.org/2000/svg";
+        const path = document.createElementNS(svgNS, "path");
+        // 하트 모양의 경로 설정
+        path.setAttribute("d", "M500 143.64C500 286.45 321.49 322.15 250.08 429.26C178.68 322.15 0.17 286.45 0.17 143.64C0.17 72.24 53.72 0.83 142.98 0.83C214.38 0.83 250.08 72.24 250.08 72.24C250.08 72.24 285.79 0.83 357.19 0.83C446.45 0.83 500 72.24 500 143.64Z");
+        return path;
+    };
+
+
+    // SVG 요소를 생성하는 함수
+    const createSVGElement = (className, viewBox) => {
+        // SVG 네임스페이스 URI
+        const svgNS = "http://www.w3.org/2000/svg";
+        const svg = document.createElementNS(svgNS, "svg");
+        svg.setAttribute("class", className);
+        svg.setAttribute("viewBox", viewBox);
+        return svg;
+    };
+
+
+    // 하트를 생성하는 함수
+    const createHeart = () => {
+        const heart = document.querySelector('.heart');
+        const innerWrapper = heart.querySelector('.inner-wrapper');
+
+        // 애니메이션 효과 데이터를 임시로 관리하기 위한 객체 생성
+        const { items, add } = usePerishable();
+        // 마우스 커서 기울기 적용을 위한 회전 값 가져오기
+        const rotate = useCursorTilt({ ref: heart, tilt: 50, bounds: 50 });
+        // 초기 오프셋
+        const offset = (Math.atan2(rotate[1], rotate[0]) / Math.PI) * (PATH_LENGTH / 2) + PATH_LENGTH / 2;
+
+        // 초기 하트 상태
+        let love = 1;
+        // 마우스 눌림 상태 초기화
+        let pressed = false;
+
+        heart.addEventListener('mouseup', () => {
+            if (pressed) {
+                if (love >= 1) {
+                    love = 0;
+                }
+                add(1000);
+                love += 0.3;
+            }
+            pressed = false;
+        });
+
+        // 하트 요소에 마우스 다운 이벤트 리스너 등록
+        heart.addEventListener('mousedown', () => {
+            pressed = true;
+        });
+
+        // 마우스 클릭시 하트 스타일(밝기, 크기) 업데이트 함수..
+        const updateStyles = () => {
+            heart.style.setProperty('--lightness', `${love * 80 + 20}%`);
+            heart.style.setProperty('--scale', 0.8 + love * 0.2 - pressed * 0.1);
+        };
+
+        // 일정 시간 간격마다 스타일 업데이트 함수 호출
+        setInterval(updateStyles, 100);
+
+        // 여러 레이어를 생성하여 하트 내부 래퍼에 추가
+        for (let i = 0; i < LAYERS; i++) {
+            const heartLayer = createSVGElement('heart-layer', '0 0 500 430');
+            heartLayer.appendChild(createHeartPath());
+            innerWrapper.appendChild(heartLayer);
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', createHeart);
+</script>
+
+</div>
+</body>
+
+</html>

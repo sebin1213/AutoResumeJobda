@@ -1,0 +1,30 @@
+{
+  "name": "잡다 자동완성",
+  "description": "잡다의 채용 서비스를 이용하는 기업 지원시 미리 작성한 이력을 붙여넣는 확장프로그램",
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "icons": {
+    "128": "logo.PNG"
+    },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "webNavigation"
+  ],
+  "background": {
+    "service_worker": "/background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["/main.js"],
+      "run_at": "document_end"
+    }
+  ]
+}

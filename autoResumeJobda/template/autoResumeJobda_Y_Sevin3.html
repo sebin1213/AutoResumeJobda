@@ -1,0 +1,833 @@
+<html lang="ko">
+
+<head>
+    <title>이력서 자동완성</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../css/applicant.css">
+    <link rel="stylesheet" href="../css/infographic.css">
+    <script src="../js/jquery-2.1.1.min.js"></script>
+    <script src="../js/custom/custom.js"></script>
+    <script src="../js/custom/chromeStorageSave.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urls = {
+            1: '../autoResumeJobda_Y_Sevin.html',
+            2: 'autoResumeJobda_Y_Sevin2.html',
+            3: 'autoResumeJobda_Y_Sevin3.html',
+            5: 'autoResumeJobda_Y_Sevin4.html'
+        };
+
+        // 버튼 요소를 선택합니다.
+        const buttons = document.querySelectorAll('nav button');
+
+        // 각 버튼에 클릭 이벤트를 추가합니다.
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                const step = this.getAttribute('data-step');
+                const url = urls[step];
+                if (url) {
+                    window.location.href = url;
+                }
+            });
+        });
+    });
+    </script>
+
+
+</head>
+
+<body class="type-01">
+
+<div id="wrap">
+    <form id="frm" method="post" data-step="4" data-type="save">
+        <header id="header">
+            <h1 class="recruitNoticeTitle">[이력서 자동완성]</h1>
+            <nav id="tab">
+                <div class=""><button type="submit" data-step="1">기본정보</button></div>
+                <div class=""><button type="submit" data-step="2">학력/연구/경력/NCS</button></div>
+                <div class="active"><button type="submit" data-step="3">어학/자격/기타</button></div>
+                <div class=""><button type="submit" data-step="5">최종제출</button></div>
+            </nav>
+        </header>
+
+        <div id="wrapResume">
+            <section class="writeResume" data-code="18">
+                <header>
+                    <h1 class="h1">어학/자격/기타</h1>
+                </header>
+                <div class="subject" data-wrap="foreignExam" data-code="165" data-type="languageExam">
+                    <h2 class="h2 "> 공인외국어시험 <span class="guide" style="font-size: 12px;position: absolute;left: 54px;top: 52px;"><span style="color:#fe5a5c">24.07.16</span> 이후 점수만 인정</span> </h2>
+                    <div class="row in-span loop" data-loop="languageExam" data-index="0">
+                        <div class="span per20 btn"> <label class="title">시험</label>
+                            <div class="wrapBtn"><button type="button" class="btn btn-icon btn-add" data-button="add"></button><button type="button" class="btn btn-icon btn-remove" data-button="remove"></button><button type="button" class="btn btn-icon btn-reset" data-button="reset"></button></div>
+                        </div>
+                        <div class="span per80 middle-set">
+                            <div class="search"><label><input type="search" class="text" data-type="foreignExam" maxlength="20000" placeholder="키워드 입력 후 &quot;Enter&quot;로 검색"><span class="label" style="background: #f00">시험검색(X)</span></label>
+                                <div class="searchResult"></div>
+                            </div> <input type="hidden" name="languageExam[0].languageExamName" value="" maxlength="20000" disabled><span class="searchResultName"></span> <input type="text" name="languageExam[0].languageExamCode" value="" class="hidden" data-rel-id="languageExam[0]" data-rel-value="00030" data-rel-target="without" title="시험 코드"  disabled> <span class="devider ybmValidateDone hide" title="YBM 한국 토익 위원회 인증완료"></span>
+                            <div class="row in-span half-margin" data-template="detail"><input type="hidden" name="languageExam[0].languageExamSn" value=""  disabled> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="subject" data-wrap="foreignAbility" data-code="166" data-type="languageSkill">
+                    <h2 class="h2 ">외국어활용능력</h2>
+                    <div class="row in-span loop" data-loop="languageSkill" data-index="0">
+                        <div class="span per20 btn"> <input type="hidden" name="languageSkill[0].languageSkillSn" value="">
+                            <lable class="title">외국어</lable>
+                            <div class="wrapBtn"><button type="button" class="btn btn-icon btn-add" data-button="add"></button><button type="button" class="btn btn-icon btn-remove" data-button="remove"></button><button type="button" class="btn btn-icon btn-reset" data-button="reset"></button></div>
+                        </div>
+                        <div class="span per80 middle-set">
+                            <div class="row in-span no-margin"> <label class="span per40 select"><select name="languageSkill[0].languageCode" data-rel-id="languageSkill[0]">
+                                <option value="">활용가능한 외국어를 선택하세요.</option>
+                                <option value="01">영어</option>
+                                <option value="02">일본어</option>
+                                <option value="03">중국어</option>
+                                <option value="04">프랑스어</option>
+                                <option value="05">독일어</option>
+                                <option value="06">스페인어</option>
+                                <option value="07">포르투갈어</option>
+                                <option value="08">이탈리아어</option>
+                                <option value="09">네덜란드어</option>
+                                <option value="10">아랍어</option>
+                                <option value="11">말레이시아어</option>
+                                <option value="12">인도네시아어</option>
+                                <option value="13">베트남어</option>
+                                <option value="14">인도어</option>
+                                <option value="15">태국어</option>
+                                <option value="16">러시아어</option>
+                                <option value="17">이란어</option>
+                                <option value="18">터키어</option>
+                                <option value="19">핀란드어</option>
+                                <option value="20">노르웨이어</option>
+                                <option value="21">헝가리어</option>
+                                <option value="22">덴마크어</option>
+                                <option value="23">미얀마어</option>
+                                <option value="24">불가리아어</option>
+                                <option value="25">폴란드어</option>
+                                <option value="26">방글라데시어</option>
+                                <option value="27">타직어</option>
+                                <option value="28">스와힐리어</option>
+                                <option value="29">키르키즈어</option>
+                                <option value="30">라오어</option>
+                                <option value="31">세르비아어</option>
+                                <option value="32">캄보디아어</option>
+                            </select></label> <label class="span per20 select"><select name="languageSkill[0].speakingLevelCodeSn" data-rel-target="languageSkill[0]" required="" >
+                                <option value="">회화수준</option>
+                                <option value="9636">Authentic</option>
+                                <option value="9637">Advanced</option>
+                                <option value="9638">Intermediate</option>
+                                <option value="9639">Basic</option>
+                                <option value="9640">Beginner</option>
+                            </select></label> <label class="span per20 select"><select name="languageSkill[0].writingLevelCodeSn" data-rel-target="languageSkill[0]" required="" >
+                                <option value="">작문수준</option>
+                                <option value="9636">Authentic</option>
+                                <option value="9637">Advanced</option>
+                                <option value="9638">Intermediate</option>
+                                <option value="9639">Basic</option>
+                                <option value="9640">Beginner</option>
+                            </select></label> <label class="span per20 select"><select name="languageSkill[0].readingLevelCodeSn" data-rel-target="languageSkill[0]" required="" >
+                                <option value="">독해수준</option>
+                                <option value="9636">Authentic</option>
+                                <option value="9637">Advanced</option>
+                                <option value="9638">Intermediate</option>
+                                <option value="9639">Basic</option>
+                                <option value="9640">Beginner</option>
+                            </select></label> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="subject" data-wrap="abroad" data-code="167" data-type="overseaExperience">
+                    <h2 class="h2 ">해외경험</h2>
+                    <div class="row in-span loop" data-loop="overseaExperience"  data-index="0">
+                        <div class="span per20 btn"> <input type="hidden" name="overseaExperience[0].overseaExperienceSn" value=""> <label class="title">해외경험</label>
+                            <div class="wrapBtn"><button type="button" class="btn btn-icon btn-add" data-button="add"></button><button type="button" class="btn btn-icon btn-remove" data-button="remove"></button><button type="button" class="btn btn-icon btn-reset" data-button="reset"></button></div>
+                        </div>
+                        <div class="span per80 middle-set">
+                            <div class="row in-span no-margin"> <label class="span per40 select"><select name="overseaExperience[0].overseaPurposeCodeSn" data-rel-id="overseaExperience[0]">
+                                <option value="">해외경험 목적</option>
+                                <option value="9619">어학연수</option>
+                                <option value="9620">해외연수</option>
+                                <option value="9621">교환학생</option>
+                                <option value="9622">세미나</option>
+                                <option value="9623">해외거주</option>
+                                <option value="9624">해외봉사</option>
+                                <option value="9625">기타</option>
+                            </select></label> </div>
+                            <div class="row in-span half-margin"> <label class="span per40 select"><select name="overseaExperience[0].overseaCountryCode" data-rel-target="overseaExperience[0]" required="" >
+                                <option value="">해외경험 국가선택</option>
+                                <option value="GH">가나</option>
+                                <option value="GA">가봉</option>
+                                <option value="GY">가이아나</option>
+                                <option value="GM">감비아</option>
+                                <option value="GP">과들루프</option>
+                                <option value="GT">과테말라</option>
+                                <option value="GU">괌</option>
+                                <option value="GD">그레나다</option>
+                                <option value="GR">그리스</option>
+                                <option value="GL">그린란드</option>
+                                <option value="GN">기니</option>
+                                <option value="GW">기니비사우</option>
+                                <option value="NA">나미비아</option>
+                                <option value="NR">나우루</option>
+                                <option value="NG">나이지리아</option>
+                                <option value="AQ">남극</option>
+                                <option value="SS">남수단공화국</option>
+                                <option value="ZA">남아공</option>
+                                <option value="NL">네덜란드</option>
+                                <option value="AN">네덜란드령 안틸레스</option>
+                                <option value="NP">네팔</option>
+                                <option value="NO">노르웨이</option>
+                                <option value="NF">노퍽 섬</option>
+                                <option value="NC">누벨칼레도니</option>
+                                <option value="NZ">뉴질랜드</option>
+                                <option value="NU">니우에</option>
+                                <option value="NE">니제르</option>
+                                <option value="NI">니카라과</option>
+                                <option value="TW">대만</option>
+                                <option value="KR">대한민국</option>
+                                <option value="DK">덴마크</option>
+                                <option value="DO">도미니카 공화국</option>
+                                <option value="DM">도미니카 연방</option>
+                                <option value="DE">독일</option>
+                                <option value="TL">동티모르</option>
+                                <option value="LA">라오스</option>
+                                <option value="LR">라이베리아</option>
+                                <option value="LV">라트비아</option>
+                                <option value="RU">러시아</option>
+                                <option value="LB">레바논</option>
+                                <option value="LS">레소토</option>
+                                <option value="RE">레위니옹</option>
+                                <option value="RO">루마니아</option>
+                                <option value="LU">룩셈부르크</option>
+                                <option value="RW">르완다</option>
+                                <option value="LY">리비아</option>
+                                <option value="LT">리투아니아</option>
+                                <option value="LI">리히텐슈타인</option>
+                                <option value="MG">마다가스카르</option>
+                                <option value="MQ">마르티니크</option>
+                                <option value="MH">마셜 제도</option>
+                                <option value="YT">마요트</option>
+                                <option value="MO">마카오</option>
+                                <option value="MK">마케도니아 공화국</option>
+                                <option value="MW">말라위</option>
+                                <option value="MY">말레이시아</option>
+                                <option value="ML">말리</option>
+                                <option value="IM">맨 섬</option>
+                                <option value="MX">멕시코</option>
+                                <option value="MC">모나코</option>
+                                <option value="MA">모로코</option>
+                                <option value="MU">모리셔스</option>
+                                <option value="MR">모리타니</option>
+                                <option value="MZ">모잠비크</option>
+                                <option value="ME">몬테네그로</option>
+                                <option value="MS">몬트세랫</option>
+                                <option value="MD">몰도바</option>
+                                <option value="MV">몰디브</option>
+                                <option value="MT">몰타</option>
+                                <option value="MN">몽골</option>
+                                <option value="US">미국</option>
+                                <option value="UM">미국령 군소 제도</option>
+                                <option value="VI">미국령 버진아일랜드</option>
+                                <option value="MM">미얀마</option>
+                                <option value="FM">미크로네시아 연방</option>
+                                <option value="VU">바누아투</option>
+                                <option value="BH">바레인</option>
+                                <option value="BB">바베이도스</option>
+                                <option value="VA">바티칸 시국</option>
+                                <option value="BS">바하마</option>
+                                <option value="BD">방글라데시</option>
+                                <option value="BM">버뮤다</option>
+                                <option value="BJ">베냉</option>
+                                <option value="VE">베네수엘라</option>
+                                <option value="VN">베트남</option>
+                                <option value="BE">벨기에</option>
+                                <option value="BY">벨라루스</option>
+                                <option value="BZ">벨리즈</option>
+                                <option value="BA">보스니아 헤르체고비나</option>
+                                <option value="BW">보츠와나</option>
+                                <option value="BO">볼리비아</option>
+                                <option value="BI">부룬디</option>
+                                <option value="BF">부르키나파소</option>
+                                <option value="BV">부베 섬</option>
+                                <option value="BT">부탄</option>
+                                <option value="MP">북마리아나 제도</option>
+                                <option value="BG">불가리아</option>
+                                <option value="BR">브라질</option>
+                                <option value="BN">브루나이</option>
+                                <option value="WS">사모아</option>
+                                <option value="SA">사우디아라비아</option>
+                                <option value="GS">사우스조지아 사우스샌드위치 제도</option>
+                                <option value="SM">산마리노</option>
+                                <option value="ST">상투메 프린시페</option>
+                                <option value="PM">생피에르 미클롱</option>
+                                <option value="EH">서사하라</option>
+                                <option value="SN">세네갈</option>
+                                <option value="RS">세르비아</option>
+                                <option value="SC">세이셸</option>
+                                <option value="LC">세인트루시아</option>
+                                <option value="VC">세인트빈센트 그레나딘</option>
+                                <option value="KN">세인트키츠 네비스</option>
+                                <option value="SH">세인트헬레나</option>
+                                <option value="SO">소말리아</option>
+                                <option value="SB">솔로몬 제도</option>
+                                <option value="SD">수단</option>
+                                <option value="SR">수리남</option>
+                                <option value="LK">스리랑카</option>
+                                <option value="SJ">스발바르 얀마옌</option>
+                                <option value="SZ">스와질란드</option>
+                                <option value="SE">스웨덴</option>
+                                <option value="CH">스위스</option>
+                                <option value="ES">스페인</option>
+                                <option value="SK">슬로바키아</option>
+                                <option value="SI">슬로베니아</option>
+                                <option value="SY">시리아</option>
+                                <option value="SL">시에라리온</option>
+                                <option value="SG">싱가포르</option>
+                                <option value="AE">아랍에미리트</option>
+                                <option value="AW">아루바</option>
+                                <option value="AM">아르메니아</option>
+                                <option value="AR">아르헨티나</option>
+                                <option value="AS">아메리칸사모아</option>
+                                <option value="IS">아이슬란드</option>
+                                <option value="HT">아이티</option>
+                                <option value="IE">아일랜드</option>
+                                <option value="AZ">아제르바이잔</option>
+                                <option value="AF">아프가니스탄</option>
+                                <option value="AD">안도라</option>
+                                <option value="AL">알바니아</option>
+                                <option value="DZ">알제리</option>
+                                <option value="AO">앙골라</option>
+                                <option value="AG">앤티가 바부다</option>
+                                <option value="AI">앵귈라</option>
+                                <option value="ER">에리트레아</option>
+                                <option value="EE">에스토니아</option>
+                                <option value="EC">에콰도르</option>
+                                <option value="ET">에티오피아</option>
+                                <option value="SV">엘살바도르</option>
+                                <option value="GB">영국</option>
+                                <option value="VG">영국령 버진아일랜드</option>
+                                <option value="IO">영국령 인도양 지역</option>
+                                <option value="YE">예멘</option>
+                                <option value="OM">오만</option>
+                                <option value="AT">오스트리아</option>
+                                <option value="HN">온두라스</option>
+                                <option value="AX">올란드 제도</option>
+                                <option value="WF">왈리스 퓌튀나</option>
+                                <option value="JO">요르단</option>
+                                <option value="UG">우간다</option>
+                                <option value="UY">우루과이</option>
+                                <option value="UZ">우즈베키스탄</option>
+                                <option value="UA">우크라이나</option>
+                                <option value="EU">유럽연합</option>
+                                <option value="IQ">이라크</option>
+                                <option value="IR">이란</option>
+                                <option value="IL">이스라엘</option>
+                                <option value="EG">이집트</option>
+                                <option value="IT">이탈리아</option>
+                                <option value="IN">인도</option>
+                                <option value="ID">인도네시아</option>
+                                <option value="JP">일본</option>
+                                <option value="JM">자메이카</option>
+                                <option value="ZM">잠비아</option>
+                                <option value="JE">저지 섬</option>
+                                <option value="GQ">적도 기니</option>
+                                <option value="KP">조선민주주의인민공화국</option>
+                                <option value="GE">조지아</option>
+                                <option value="CN">중국</option>
+                                <option value="CF">중앙아프리카 공화국</option>
+                                <option value="DJ">지부티</option>
+                                <option value="GI">지브롤터</option>
+                                <option value="ZW">짐바브웨</option>
+                                <option value="TD">차드</option>
+                                <option value="CZ">체코</option>
+                                <option value="CL">칠레</option>
+                                <option value="CM">카메룬</option>
+                                <option value="CV">카보베르데</option>
+                                <option value="KZ">카자흐스탄</option>
+                                <option value="QA">카타르</option>
+                                <option value="KH">캄보디아</option>
+                                <option value="CA">캐나다</option>
+                                <option value="KE">케냐</option>
+                                <option value="KY">케이맨 제도</option>
+                                <option value="KM">코모로</option>
+                                <option value="CR">코스타리카</option>
+                                <option value="CC">코코스 제도</option>
+                                <option value="CI">코트디부아르</option>
+                                <option value="CO">콜롬비아</option>
+                                <option value="CG">콩고 공화국</option>
+                                <option value="CD">콩고 민주 공화국</option>
+                                <option value="CU">쿠바</option>
+                                <option value="KW">쿠웨이트</option>
+                                <option value="CK">쿡 제도</option>
+                                <option value="HR">크로아티아</option>
+                                <option value="CX">크리스마스 섬</option>
+                                <option value="KG">키르기스스탄</option>
+                                <option value="KI">키리바시</option>
+                                <option value="CY">키프로스</option>
+                                <option value="TH">타이</option>
+                                <option value="TJ">타지키스탄</option>
+                                <option value="TZ">탄자니아</option>
+                                <option value="TC">터크스 케이커스 제도</option>
+                                <option value="TR">터키</option>
+                                <option value="TG">토고</option>
+                                <option value="TK">토켈라우</option>
+                                <option value="TO">통가</option>
+                                <option value="TM">투르크메니스탄</option>
+                                <option value="TV">투발루</option>
+                                <option value="TN">튀니지</option>
+                                <option value="TT">트리니다드 토바고</option>
+                                <option value="PA">파나마</option>
+                                <option value="PY">파라과이</option>
+                                <option value="PK">파키스탄</option>
+                                <option value="PG">파푸아 뉴기니</option>
+                                <option value="PW">팔라우</option>
+                                <option value="PS">팔레스타인</option>
+                                <option value="FO">페로 제도</option>
+                                <option value="PE">페루</option>
+                                <option value="PT">포르투갈</option>
+                                <option value="FK">포클랜드 제도</option>
+                                <option value="PL">폴란드</option>
+                                <option value="PR">푸에르토리코</option>
+                                <option value="FR">프랑스</option>
+                                <option value="GF">프랑스령 기아나</option>
+                                <option value="TF">프랑스령 남부와 남극 지역</option>
+                                <option value="PF">프랑스령 폴리네시아</option>
+                                <option value="FJ">피지</option>
+                                <option value="FI">핀란드</option>
+                                <option value="PH">필리핀</option>
+                                <option value="PN">핏케언 제도</option>
+                                <option value="HM">허드 맥도널드 제도</option>
+                                <option value="HU">헝가리</option>
+                                <option value="AU">호주</option>
+                                <option value="HK">홍콩</option>
+                            </select></label> <label class="span per45 date"><input type="text" data-dates="overseaExperience[0].overseaDate:YMD" value="" name="overseaExperience[0].departureDate" class="text date start" placeholder="출국일" title="출국일" data-rel-target="overseaExperience[0]" required="" ><input type="text" data-dates="overseaExperience[0].overseaDate:END" value="" class="text date end" name="overseaExperience[0].returnDate" placeholder="입국일" title="입국일" data-rel-target="overseaExperience[0]" required="" ></label> </div>
+                            <div class="row in-span half-margin">
+                                <div class="span per100"><input maxlength="20000" type="text" name="overseaExperience[0].comment" value="" class="text" placeholder="해외경험 내용기술" title="해외경험 내용기술" data-rel-target="overseaExperience[0]" required="" ></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="subject" data-wrap="license" data-code="168" data-type="license">
+                    <h2 class="h2 ">자격증 / 면허증</h2>
+                    <div class="row loop" data-loop="license" data-index="0">
+                        <div class="row in-span no-margin">
+                            <div class="span per20 btn"> <input type="hidden" name="license[0].licenseActivitySn" value=""> <label class="title required">자격증명</label>
+                                <div class="wrapBtn"><button type="button" class="btn btn-icon btn-add" data-button="add"></button><button type="button" class="btn btn-icon btn-remove" data-button="remove"></button><button type="button" class="btn btn-icon btn-reset" data-button="reset"></button></div>
+                            </div>
+                            <div class="span per80 middle-set">
+                                <div class="search"><label><input type="search" class="text" data-type="license" maxlength="60" placeholder="키워드 입력 후 &quot;Enter&quot;로 검색"><span class="label" style="background: #f00">자격증검색(X)</span></label>
+                                    <div class="searchResult"></div>
+                                </div> <input type="hidden" name="license[0].licenseName" value="" maxlength="60"><span class="searchResultName" disabled></span> <input type="text" name="license[0].licenseCode" value="" class="hidden" data-rel-id="license[0]" title="자격증코드" disabled>
+                            </div>
+                        </div>
+                        <div class="row in-span half-margin"> <label class="span per20 title required">발급기관</label>
+                            <div class="span per35"><input type="text" maxlength="64" class="text" name="license[0].organization" placeholder="발급기관" title="발급기관" value="" data-rel-target="license[0]"  required=""></div> <label data-privaterestore="0" data-privateremove="0.registNumber" class="span per20 title devider required" style="display:block;;">등록번호</label>
+                            <div data-privaterestore="0" data-privateremove="0.registNumber" class="span per25" style="display:block;"><input type="text" maxlength="64" class="text" name="license[0].registNumber" placeholder="등록번호" title="등록번호" value="" data-rel-target="license[0]"  required=""></div>
+                        </div>
+                        <div class="row in-span half-margin"> <label class="span per20 title required">취득일</label>
+                            <div class="span per20"><input type="text" data-dates="license[0].licenseDate:YMD" class="text date" name="license[0].acquireDate" value="" placeholder="취득일" title="취득일" required="" data-rel-target="license[0]" ></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="subject" data-wrap="software" data-code="169" data-type="softwareSkill">
+                    <h2 class="h2 ">컴퓨터활용능력</h2>
+                    <div class="row in-span loop" data-loop="softwareSkill" data-index="0">
+                        <div class="span per20 btn"> <input type="hidden" name="softwareSkill[0].softwareSkillSn" value=""> <label class="title">컴퓨터활용</label>
+                            <div class="wrapBtn"><button type="button" class="btn btn-icon btn-add" data-button="add"></button><button type="button" class="btn btn-icon btn-remove" data-button="remove"></button><button type="button" class="btn btn-icon btn-reset" data-button="reset"></button></div>
+                        </div>
+                        <div class="span per80 middle-set">
+                            <div class="row in-span no-margin"> <label class="span per25 select"><select name="softwareSkill[0].softwareCategoryCodeSn" data-rel-id="softwareSkill[0]">
+                                <option value="">활용능력 구분</option>
+                                <option value="9626">OA</option>
+                                <option value="9627">언어</option>
+                                <option value="9628">그래픽</option>
+                                <option value="9629">공학용</option>
+                                <option value="9630">기타</option>
+                            </select></label>
+                                <div class="span per75"><input maxlength="128" type="text" name="softwareSkill[0].softwareName" value="" class="text" placeholder="프로그램명을 입력하세요." title="프로그램명" data-rel-target="softwareSkill[0]" required="" ></div>
+                            </div>
+                            <div class="row in-span half-margin"> <label class="span per25 select"><select name="softwareSkill[0].softwareLevelCodeSn" data-rel-target="softwareSkill[0]" required="" >
+                                <option value="">활용수준 선택</option>
+                                <option value="9631">특급</option>
+                                <option value="9632">고급</option>
+                                <option value="9633">중급</option>
+                                <option value="9634">초급</option>
+                                <option value="9635">입문</option>
+                            </select></label> <label class="span per40 select"><select name="softwareSkill[0].usedPeriod" data-rel-target="softwareSkill[0]" required="" >
+                                <option value="">사용기간 선택</option>
+                                <option value="1">1년</option>
+                                <option value="2">2년</option>
+                                <option value="3">3년</option>
+                                <option value="4">4년</option>
+                                <option value="5">5년</option>
+                                <option value="6">6년</option>
+                                <option value="7">7년</option>
+                                <option value="8">8년</option>
+                                <option value="9">9년</option>
+                                <option value="10">10년</option>
+                                <option value="91">10년이상</option>
+                            </select></label> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="subject" data-wrap="award" data-code="170" data-type="award">
+                    <h2 class="h2 ">수상경력</h2>
+                    <div class="row loop" data-loop="award" data-index="0">
+                        <div class="row in-span no-margin">
+                            <div class="span per20 btn"> <input type="hidden" name="award[0].awardSn" value=""> <label class="title">상훈명</label>
+                                <div class="wrapBtn"><button type="button" class="btn btn-icon btn-add" data-button="add"></button><button type="button" class="btn btn-icon btn-remove" data-button="remove"></button><button type="button" class="btn btn-icon btn-reset" data-button="reset"></button></div>
+                            </div>
+                            <div class="span per80 middle-set"><input type="text" maxlength="64" name="award[0].awardName" value="" class="text" placeholder="상훈명을 입력하세요." title="상훈명" data-rel-id="award[0]"></div>
+                        </div>
+                        <div class="row in-span half-margin"><label class="span per20 title">수여기관</label>
+                            <div class="span per40"><input maxlength="64" type="text" name="award[0].organization" value="" class="text" placeholder="수여기관을 입력하세요." title="수여기관" data-rel-target="award[0]" required="" ></div><label class="span per20 title devider">수상일자</label><span class="span per20"><input type="text" data-dates="award[0].awardDate:YMD" name="award[0].awardDate" value="" class="text date" data-rel-target="award[0]" required=""  title="수상일자"></span>
+                        </div>
+                        <div class="row in-span half-margin"> <label class="span per20 title">수상내역</label>
+                            <div class="span per80"><input maxlength="20000" type="text" name="award[0].comment" value="" class="text" placeholder="수상내역을 상세히 입력하세요." title="수상내역" data-rel-target="award[0]" required="" ></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="subject" data-wrap="education" data-code="171" data-type="education">
+                    <h2 class="h2 ">교육이수사항</h2>
+                    <div class="row loop" data-loop="education" data-index="0">
+                        <div class="row in-span no-margin">
+                            <div class="span per20 btn"> <input type="hidden" name="education[0].educationActivitySn" value=""> <label class="title">과정명</label>
+                                <div class="wrapBtn"><button type="button" class="btn btn-icon btn-add" data-button="add"></button><button type="button" class="btn btn-icon btn-remove" data-button="remove"></button><button type="button" class="btn btn-icon btn-reset" data-button="reset"></button></div>
+                            </div>
+                            <div class="span per35"><input maxlength="128" type="text" name="education[0].educationName" value="" class="text" placeholder="교육 과정명을 입력하세요." title="교육 과정명" data-rel-id="education[0]"></div><label class="span per20 title devider">교육기관</label>
+                            <div class="span per25"><input maxlength="64" type="text" class="text" name="education[0].organization" value="" placeholder="교육 기관명을 입력하세요." title="교육 기관명" required="" data-rel-target="education[0]" ></div>
+                        </div>
+                        <div class="row in-span half-margin"><label class="span per20 title">이수기간</label><label class="span per35 date"> <input type="text" data-dates="education[0].educationDate:YMD" name="education[0].startDate" value="" class="text date start" required="" data-rel-target="education[0]"  title="시작일"> <input type="text" data-dates="education[0].educationDate:END" name="education[0].endDate" value="" class="text date end" required="" data-rel-target="education[0]"  title="종료일"></label><label class="span per20 title devider">교육시간</label><span class="span per25 label time"><input type="number" class="text" min="0" max="9999" name="education[0].time" value="" required="" maxlength="4" data-rel-target="education[0]"  title="교육시간"></span></div>
+                        <div class="row in-span half-margin"> <label class="span per20 title">주요내용</label>
+                            <div class="span per80"><input type="text" maxlength="20000" name="education[0].comment" value="" class="text" placeholder="교육 과정 주요 내용을 상세히 입력하세요." title="주요내용" required="" data-rel-target="education[0]" ></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="subject" data-wrap="activity" data-code="172" data-type="activity">
+                    <h2 class="h2 ">학내외 활동</h2>
+                    <div class="row loop" data-loop="activity" data-index="0">
+                        <div class="row in-span no-margin">
+                            <div class="span per20 btn"> <input type="hidden" name="activity[0].activitySn" value=""> <label class="title required">활동구분</label>
+                                <div class="wrapBtn"><button type="button" class="btn btn-icon btn-add" data-button="add"></button><button type="button" class="btn btn-icon btn-remove" data-button="remove"></button><button type="button" class="btn btn-icon btn-reset" data-button="reset"></button></div>
+                            </div> <label class="span per20 select"><select name="activity[0].activityCategorySn" id="" data-rel-id="activity[0]">
+                            <option value="">활동구분 선택</option>
+                            <option value="9641">동아리활동</option>
+                            <option value="9642">연구회</option>
+                            <option value="9643">팀 프로젝트</option>
+                            <option value="9644">온라인 커뮤니티</option>
+                            <option value="9645">재능기부 활동</option>
+                            <option value="9646">기타사회활동</option>
+                        </select></label> <label class="span per25 title devider ">기관 및 조직명</label>
+                            <div class="span per35"><input maxlength="64" type="text" class="text" placeholder="기관 및 조직명을 입력하세요." title="기관 및 조직명" name="activity[0].organization" value="" data-rel-target="activity[0]" ></div>
+                        </div>
+                        <div class="row in-span half-margin"><label class="span per20 title ">활동기간</label><label class="span per35 date"> <input type="text" class="text date start" data-dates="activity[0].activityDate:YMD" name="activity[0].startDate" value="" data-rel-target="activity[0]"  title="시작일"> <input type="text" class="text date end" data-dates="activity[0].activityDate:END" name="activity[0].endDate" value="" data-rel-target="activity[0]"  title="종료일"></label><label class="span title per20 devider required">직위 또는 역할</label><span class="span per25"><input maxlength="128" type="text" class="text" placeholder="" name="activity[0].role" value="" data-rel-target="activity[0]"  title="직위 또는 역할"></span></div>
+                        <div class="row in-span half-margin"> <label class="span per20 title ">활동내역</label>
+                            <div class="span per80"><input maxlength="20000" type="text" value="" class="text" name="activity[0].contents" placeholder="활동 및 업무내역을 상세히 입력하세요." title="활동내역" data-rel-target="activity[0]" ></div>
+                        </div>
+                        <div class="row in-span half-margin"> <label class="span per20 title ">비고</label>
+                            <div class="span per80"><input maxlength="20000" type="text" value="" class="text" name="activity[0].comment" placeholder="비고를 입력하세요." title="비고" data-rel-target="activity[0]" ></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="subject" data-wrap="volunteer" data-code="173" data-type="volunteerActivity">
+                    <h2 class="h2 ">봉사활동</h2>
+                    <div class="row loop" data-loop="volunteerActivity" data-index="0">
+                        <div class="row in-span no-margin">
+                            <div class="span per20 btn"> <input type="hidden" name="volunteerActivity[0].volunteerActivitySn" value=""> <label class="title required">봉사구분</label>
+                                <div class="wrapBtn"><button type="button" class="btn btn-icon btn-add" data-button="add"></button><button type="button" class="btn btn-icon btn-remove" data-button="remove"></button><button type="button" class="btn btn-icon btn-reset" data-button="reset"></button></div>
+                            </div> <label class="span per20 select"><select name="volunteerActivity[0].volunteerCategoryCodeSn" data-rel-id="volunteerActivity[0]">
+                            <option value="">봉사구분 선택</option>
+                            <option value="9647">생활환경편의지원</option>
+                            <option value="9648">주거환경</option>
+                            <option value="9649">상담</option>
+                            <option value="9650">교육</option>
+                            <option value="9651">보건의료</option>
+                            <option value="9652">농어촌 봉사</option>
+                            <option value="9653">문화체육</option>
+                            <option value="9654">환경보호</option>
+                            <option value="9655">행정지원</option>
+                            <option value="9656">안전,예방</option>
+                            <option value="9657">공익,인권</option>
+                            <option value="9658">재해,재난</option>
+                            <option value="9659">국제협력,해외봉사</option>
+                            <option value="9660">멘토링</option>
+                            <option value="9661">기타</option>
+                        </select></label> <label class="span per25 title devider required">주관기관명</label>
+                            <div class="span per35"><input maxlength="64" type="text" class="text" placeholder="주관기관명을 입력하세요." title="주관기관명" value="" name="volunteerActivity[0].organization" data-rel-target="volunteerActivity[0]" ></div>
+                        </div>
+                        <div class="row in-span half-margin"><label class="span per20 title ">봉사기간</label><label class="span per35 date"> <input type="text" class="text date start" data-dates="volunteerActivity[0].volunteerDate:YMD" name="volunteerActivity[0].startDate" value="" data-rel-target="volunteerActivity[0]"  title="시작일"> <input type="text" class="text date end" data-dates="volunteerActivity[0].volunteerDate:END" name="volunteerActivity[0].endDate" value="" data-rel-target="volunteerActivity[0]"  title="종료일"></label><label class="span per20 title devider required">봉사시간</label><span class="span per25 label time"><input type="number" class="text" min="0" max="9999" step="0.1" name="volunteerActivity[0].time" value="" data-rel-target="volunteerActivity[0]"  title="봉사시간"></span></div>
+                        <div class="row in-span half-margin"><label class="span per20 title ">봉사지역</label><label class="span per35 select"><select name="volunteerActivity[0].locationCode" value="" data-rel-target="volunteerActivity[0]" >
+                            <option value="">봉사활동 지역 선택</option>
+                            <option value="GH">가나</option>
+                            <option value="GA">가봉</option>
+                            <option value="GY">가이아나</option>
+                            <option value="GM">감비아</option>
+                            <option value="GP">과들루프</option>
+                            <option value="GT">과테말라</option>
+                            <option value="GU">괌</option>
+                            <option value="GD">그레나다</option>
+                            <option value="GR">그리스</option>
+                            <option value="GL">그린란드</option>
+                            <option value="GN">기니</option>
+                            <option value="GW">기니비사우</option>
+                            <option value="NA">나미비아</option>
+                            <option value="NR">나우루</option>
+                            <option value="NG">나이지리아</option>
+                            <option value="AQ">남극</option>
+                            <option value="SS">남수단공화국</option>
+                            <option value="ZA">남아공</option>
+                            <option value="NL">네덜란드</option>
+                            <option value="AN">네덜란드령 안틸레스</option>
+                            <option value="NP">네팔</option>
+                            <option value="NO">노르웨이</option>
+                            <option value="NF">노퍽 섬</option>
+                            <option value="NC">누벨칼레도니</option>
+                            <option value="NZ">뉴질랜드</option>
+                            <option value="NU">니우에</option>
+                            <option value="NE">니제르</option>
+                            <option value="NI">니카라과</option>
+                            <option value="TW">대만</option>
+                            <option value="KR" selected="">대한민국</option>
+                            <option value="DK">덴마크</option>
+                            <option value="DO">도미니카 공화국</option>
+                            <option value="DM">도미니카 연방</option>
+                            <option value="DE">독일</option>
+                            <option value="TL">동티모르</option>
+                            <option value="LA">라오스</option>
+                            <option value="LR">라이베리아</option>
+                            <option value="LV">라트비아</option>
+                            <option value="RU">러시아</option>
+                            <option value="LB">레바논</option>
+                            <option value="LS">레소토</option>
+                            <option value="RE">레위니옹</option>
+                            <option value="RO">루마니아</option>
+                            <option value="LU">룩셈부르크</option>
+                            <option value="RW">르완다</option>
+                            <option value="LY">리비아</option>
+                            <option value="LT">리투아니아</option>
+                            <option value="LI">리히텐슈타인</option>
+                            <option value="MG">마다가스카르</option>
+                            <option value="MQ">마르티니크</option>
+                            <option value="MH">마셜 제도</option>
+                            <option value="YT">마요트</option>
+                            <option value="MO">마카오</option>
+                            <option value="MK">마케도니아 공화국</option>
+                            <option value="MW">말라위</option>
+                            <option value="MY">말레이시아</option>
+                            <option value="ML">말리</option>
+                            <option value="IM">맨 섬</option>
+                            <option value="MX">멕시코</option>
+                            <option value="MC">모나코</option>
+                            <option value="MA">모로코</option>
+                            <option value="MU">모리셔스</option>
+                            <option value="MR">모리타니</option>
+                            <option value="MZ">모잠비크</option>
+                            <option value="ME">몬테네그로</option>
+                            <option value="MS">몬트세랫</option>
+                            <option value="MD">몰도바</option>
+                            <option value="MV">몰디브</option>
+                            <option value="MT">몰타</option>
+                            <option value="MN">몽골</option>
+                            <option value="US">미국</option>
+                            <option value="UM">미국령 군소 제도</option>
+                            <option value="VI">미국령 버진아일랜드</option>
+                            <option value="MM">미얀마</option>
+                            <option value="FM">미크로네시아 연방</option>
+                            <option value="VU">바누아투</option>
+                            <option value="BH">바레인</option>
+                            <option value="BB">바베이도스</option>
+                            <option value="VA">바티칸 시국</option>
+                            <option value="BS">바하마</option>
+                            <option value="BD">방글라데시</option>
+                            <option value="BM">버뮤다</option>
+                            <option value="BJ">베냉</option>
+                            <option value="VE">베네수엘라</option>
+                            <option value="VN">베트남</option>
+                            <option value="BE">벨기에</option>
+                            <option value="BY">벨라루스</option>
+                            <option value="BZ">벨리즈</option>
+                            <option value="BA">보스니아 헤르체고비나</option>
+                            <option value="BW">보츠와나</option>
+                            <option value="BO">볼리비아</option>
+                            <option value="BI">부룬디</option>
+                            <option value="BF">부르키나파소</option>
+                            <option value="BV">부베 섬</option>
+                            <option value="BT">부탄</option>
+                            <option value="MP">북마리아나 제도</option>
+                            <option value="BG">불가리아</option>
+                            <option value="BR">브라질</option>
+                            <option value="BN">브루나이</option>
+                            <option value="WS">사모아</option>
+                            <option value="SA">사우디아라비아</option>
+                            <option value="GS">사우스조지아 사우스샌드위치 제도</option>
+                            <option value="SM">산마리노</option>
+                            <option value="ST">상투메 프린시페</option>
+                            <option value="PM">생피에르 미클롱</option>
+                            <option value="EH">서사하라</option>
+                            <option value="SN">세네갈</option>
+                            <option value="RS">세르비아</option>
+                            <option value="SC">세이셸</option>
+                            <option value="LC">세인트루시아</option>
+                            <option value="VC">세인트빈센트 그레나딘</option>
+                            <option value="KN">세인트키츠 네비스</option>
+                            <option value="SH">세인트헬레나</option>
+                            <option value="SO">소말리아</option>
+                            <option value="SB">솔로몬 제도</option>
+                            <option value="SD">수단</option>
+                            <option value="SR">수리남</option>
+                            <option value="LK">스리랑카</option>
+                            <option value="SJ">스발바르 얀마옌</option>
+                            <option value="SZ">스와질란드</option>
+                            <option value="SE">스웨덴</option>
+                            <option value="CH">스위스</option>
+                            <option value="ES">스페인</option>
+                            <option value="SK">슬로바키아</option>
+                            <option value="SI">슬로베니아</option>
+                            <option value="SY">시리아</option>
+                            <option value="SL">시에라리온</option>
+                            <option value="SG">싱가포르</option>
+                            <option value="AE">아랍에미리트</option>
+                            <option value="AW">아루바</option>
+                            <option value="AM">아르메니아</option>
+                            <option value="AR">아르헨티나</option>
+                            <option value="AS">아메리칸사모아</option>
+                            <option value="IS">아이슬란드</option>
+                            <option value="HT">아이티</option>
+                            <option value="IE">아일랜드</option>
+                            <option value="AZ">아제르바이잔</option>
+                            <option value="AF">아프가니스탄</option>
+                            <option value="AD">안도라</option>
+                            <option value="AL">알바니아</option>
+                            <option value="DZ">알제리</option>
+                            <option value="AO">앙골라</option>
+                            <option value="AG">앤티가 바부다</option>
+                            <option value="AI">앵귈라</option>
+                            <option value="ER">에리트레아</option>
+                            <option value="EE">에스토니아</option>
+                            <option value="EC">에콰도르</option>
+                            <option value="ET">에티오피아</option>
+                            <option value="SV">엘살바도르</option>
+                            <option value="GB">영국</option>
+                            <option value="VG">영국령 버진아일랜드</option>
+                            <option value="IO">영국령 인도양 지역</option>
+                            <option value="YE">예멘</option>
+                            <option value="OM">오만</option>
+                            <option value="AT">오스트리아</option>
+                            <option value="HN">온두라스</option>
+                            <option value="AX">올란드 제도</option>
+                            <option value="WF">왈리스 퓌튀나</option>
+                            <option value="JO">요르단</option>
+                            <option value="UG">우간다</option>
+                            <option value="UY">우루과이</option>
+                            <option value="UZ">우즈베키스탄</option>
+                            <option value="UA">우크라이나</option>
+                            <option value="EU">유럽연합</option>
+                            <option value="IQ">이라크</option>
+                            <option value="IR">이란</option>
+                            <option value="IL">이스라엘</option>
+                            <option value="EG">이집트</option>
+                            <option value="IT">이탈리아</option>
+                            <option value="IN">인도</option>
+                            <option value="ID">인도네시아</option>
+                            <option value="JP">일본</option>
+                            <option value="JM">자메이카</option>
+                            <option value="ZM">잠비아</option>
+                            <option value="JE">저지 섬</option>
+                            <option value="GQ">적도 기니</option>
+                            <option value="KP">조선민주주의인민공화국</option>
+                            <option value="GE">조지아</option>
+                            <option value="CN">중국</option>
+                            <option value="CF">중앙아프리카 공화국</option>
+                            <option value="DJ">지부티</option>
+                            <option value="GI">지브롤터</option>
+                            <option value="ZW">짐바브웨</option>
+                            <option value="TD">차드</option>
+                            <option value="CZ">체코</option>
+                            <option value="CL">칠레</option>
+                            <option value="CM">카메룬</option>
+                            <option value="CV">카보베르데</option>
+                            <option value="KZ">카자흐스탄</option>
+                            <option value="QA">카타르</option>
+                            <option value="KH">캄보디아</option>
+                            <option value="CA">캐나다</option>
+                            <option value="KE">케냐</option>
+                            <option value="KY">케이맨 제도</option>
+                            <option value="KM">코모로</option>
+                            <option value="CR">코스타리카</option>
+                            <option value="CC">코코스 제도</option>
+                            <option value="CI">코트디부아르</option>
+                            <option value="CO">콜롬비아</option>
+                            <option value="CG">콩고 공화국</option>
+                            <option value="CD">콩고 민주 공화국</option>
+                            <option value="CU">쿠바</option>
+                            <option value="KW">쿠웨이트</option>
+                            <option value="CK">쿡 제도</option>
+                            <option value="HR">크로아티아</option>
+                            <option value="CX">크리스마스 섬</option>
+                            <option value="KG">키르기스스탄</option>
+                            <option value="KI">키리바시</option>
+                            <option value="CY">키프로스</option>
+                            <option value="TH">타이</option>
+                            <option value="TJ">타지키스탄</option>
+                            <option value="TZ">탄자니아</option>
+                            <option value="TC">터크스 케이커스 제도</option>
+                            <option value="TR">터키</option>
+                            <option value="TG">토고</option>
+                            <option value="TK">토켈라우</option>
+                            <option value="TO">통가</option>
+                            <option value="TM">투르크메니스탄</option>
+                            <option value="TV">투발루</option>
+                            <option value="TN">튀니지</option>
+                            <option value="TT">트리니다드 토바고</option>
+                            <option value="PA">파나마</option>
+                            <option value="PY">파라과이</option>
+                            <option value="PK">파키스탄</option>
+                            <option value="PG">파푸아 뉴기니</option>
+                            <option value="PW">팔라우</option>
+                            <option value="PS">팔레스타인</option>
+                            <option value="FO">페로 제도</option>
+                            <option value="PE">페루</option>
+                            <option value="PT">포르투갈</option>
+                            <option value="FK">포클랜드 제도</option>
+                            <option value="PL">폴란드</option>
+                            <option value="PR">푸에르토리코</option>
+                            <option value="FR">프랑스</option>
+                            <option value="GF">프랑스령 기아나</option>
+                            <option value="TF">프랑스령 남부와 남극 지역</option>
+                            <option value="PF">프랑스령 폴리네시아</option>
+                            <option value="FJ">피지</option>
+                            <option value="FI">핀란드</option>
+                            <option value="PH">필리핀</option>
+                            <option value="PN">핏케언 제도</option>
+                            <option value="HM">허드 맥도널드 제도</option>
+                            <option value="HU">헝가리</option>
+                            <option value="AU">호주</option>
+                            <option value="HK">홍콩</option>
+                        </select></label></div>
+                        <div class="row in-span half-margin"> <label class="span per20 title ">봉사내용</label>
+                            <div class="span per80"><input maxlength="20000" type="text" name="volunteerActivity[0].comment" value="" class="text" placeholder="봉사활동 주요내용을 상세히 입력하세요." title="봉사활동 주요내용" data-rel-target="volunteerActivity[0]" ></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="wrapSessionArea">
+            <div id="sessionArea" class="sessionArea">
+                <div class="clock">
+                    <div class="point"></div>
+                </div>
+                <dl>
+                    <dt class="login">실제 지원페이지가 아닌 임시저장 페이지 입니다.</dt>
+                </dl>
+                <div class="btnGroup"><button type="button" data-type="tempSave" class="btn btn-great btn-ng" id="saveResumeButton" onclick="collectAndSaveFormData()">임시저장</button><button type="submit" data-step="2" class="btn btn-great" id="nextResumeButton" style="display: inline-block;" onclick="collectAndSaveFormData()">다음</button></div>
+            </div>
+        </div>
+        <div id="guideTooltip" class="sessionTooltip hide"></div>
+    </form>
+
+</div>
+</body>
+
+</html>

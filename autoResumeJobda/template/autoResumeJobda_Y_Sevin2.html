@@ -1,0 +1,633 @@
+<html lang="ko">
+
+<head>
+    <title>이력서 자동완성</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../css/applicant.css">
+    <link rel="stylesheet" href="../css/infographic.css">
+    <script src="../js/jquery-2.1.1.min.js"></script>
+    <script src="../js/custom/custom.js"></script>
+    <script src="../js/custom/chromeStorageSave.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urls = {
+            1: '../autoResumeJobda_Y_Sevin.html',
+            2: 'autoResumeJobda_Y_Sevin2.html',
+            3: 'autoResumeJobda_Y_Sevin3.html',
+            5: 'autoResumeJobda_Y_Sevin4.html'
+        };
+
+        // 버튼 요소를 선택합니다.
+        const buttons = document.querySelectorAll('nav button');
+
+        // 각 버튼에 클릭 이벤트를 추가합니다.
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                const step = this.getAttribute('data-step');
+                const url = urls[step];
+                if (url) {
+                    window.location.href = url;
+                }
+            });
+        });
+    });
+    </script>
+
+</head>
+
+<body class="type-01">
+
+<div id="wrap">
+    <form id="frm" method="post" data-step="3" data-type="save" action="autoResumeJobda_Y_Sevin3.html">
+        <header id="header">
+            <h1 class="recruitNoticeTitle">[이력서 자동완성]</h1>
+            <nav id="tab"><div class=""><button type="submit" data-step="1">기본정보</button></div><div class="active"><button type="submit" data-step="2">학력/연구/경력/NCS</button></div><div class=""><button type="submit" data-step="3">어학/자격/기타</button></div><div class=""><button type="submit" data-step="5">최종제출</button></div></nav>
+        </header>
+
+        <div id="wrapResume">
+            <section class="writeResume" data-code="140">
+                <header>
+                    <h1 class="h1">고등학교</h1>
+                </header>
+                <div class="subject">
+                    <h2 class="h2 required">졸업구분</h2>
+                    <div class="row in-span no-margin">
+                        <div class="span per100 radio" data-rel-id="highschool"> <label><input type="radio" name="highschool.graduationTypeCode" value="01" ><span class="label">졸업</span></label> <label><input type="radio" name="highschool.graduationTypeCode" value="02" ><span class="label">졸업예정</span></label> <label><input type="radio" name="highschool.graduationTypeCode" value="04" ><span class="label">중퇴</span></label> <label><input type="radio" name="highschool.graduationTypeCode" value="05" ><span class="label">휴학</span></label> <label><input type="radio" name="highschool.graduationTypeCode" value="07" ><span class="label">재학</span></label> </div>
+                    </div>
+                </div>
+                <div class="subject">
+                    <h2 class="h2 required">학교관련</h2>
+                    <div class="row in-span no-margin">
+                        <label class="span per15 title">학교명</label>
+                        <div class="span per85 middle-set">
+                            <div class="search">
+                                <label>
+                                    <input type="search" class="text" data-type="highschool" data-rel-target="highschool" maxlength="256" placeholder="키워드 입력 후 &quot;Enter&quot;로 검색" autocomplete="off" id="highschool-search">
+                                    <span class="label" style="background: #f00">학교(저장X)</span><!--<span class="label">학교검색</span></label>-->
+                                </label>
+                                <div class="searchResult">
+                                    <ul class="searchResultList" id="search-result-list"></ul>
+                                </div>
+                            </div>
+                            <input type="hidden" name="highschool.academyActivitySn" value="" data-rel-target="highschool">
+                            <input type="hidden" name="highschool.academyName" value="" maxlength="256" data-rel-target="highschool" id="selected-school-name" disabled>
+                            <span class="searchResultName" id="selected-school-display"></span>
+                            <input type="text" name="highschool.academyCode" value="" data-rel-target="highschool" class="hidden"  title="학교코드" id="selected-school-code"  disabled>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="row in-span half-margin"> <label class="span per15 title ">학교소재지</label> <label class="span per15 select"><select name="highschool.locationCode" data-rel-target="highschool" >
+                        <option value="">학교소재지</option>
+                        <option value="101">서울</option>
+                        <option value="102">부산</option>
+                        <option value="103">대구</option>
+                        <option value="104">인천</option>
+                        <option value="105">광주</option>
+                        <option value="106">대전</option>
+                        <option value="107">울산</option>
+                        <option value="108">경기</option>
+                        <option value="109">강원</option>
+                        <option value="110">충북</option>
+                        <option value="111">충남</option>
+                        <option value="112">전북</option>
+                        <option value="113">전남</option>
+                        <option value="114">경북</option>
+                        <option value="115">경남</option>
+                        <option value="116">제주</option>
+                        <option value="117">세종</option>
+                        <option value="201">미국</option>
+                        <option value="202">일본</option>
+                        <option value="203">프랑스</option>
+                        <option value="204">호주</option>
+                        <option value="205">중국</option>
+                        <option value="206">영국</option>
+                        <option value="207">독일</option>
+                        <option value="208">캐나다</option>
+                        <option value="209">스웨덴</option>
+                        <option value="210">핀란드</option>
+                        <option value="211">이탈리아</option>
+                        <option value="212">러시아</option>
+                        <option value="213">대만</option>
+                        <option value="214">인도네시아</option>
+                        <option value="215">말레이시아</option>
+                        <option value="216">방글라데시</option>
+                        <option value="217">싱가폴</option>
+                        <option value="218">인도</option>
+                        <option value="219">필리핀</option>
+                        <option value="220">홍콩</option>
+                        <option value="221">베트남</option>
+                        <option value="222">뉴질랜드</option>
+                        <option value="223">오세아니아</option>
+                        <option value="224">중남미</option>
+                        <option value="225">아프리카</option>
+                        <option value="901">기타 아시아</option>
+                        <option value="902">기타 유럽</option>
+                        <option value="999">기타 지역</option>
+                    </select></label> <label class="span per15 title  devider">계열</label> <label class="span per15 select"><select name="highschool.highschoolCategoryCode" data-rel-target="highschool" >
+                        <option value="">계열</option>
+                        <option value="01">인문</option>
+                        <option value="02">상업</option>
+                        <option value="03">공업</option>
+                        <option value="04">전산정보</option>
+                        <option value="05">예술</option>
+                        <option value="06">농업</option>
+                        <option value="07">과학</option>
+                        <option value="08">외국어</option>
+                        <option value="09">체육</option>
+                        <option value="10">마이스터</option>
+                        <option value="11">특성화</option>
+                        <option value="99">기타</option>
+                    </select></label> <label class="span per20 title  devider">주간/야간</label>
+                        <div class="span per20 radio"> <label><input type="radio" name="highschool.dayOrNight" value="01" data-rel-target="highschool" ><span class="label">주간</span></label> <label><input type="radio" name="highschool.dayOrNight" value="02" data-rel-target="highschool" ><span class="label">야간</span></label> </div>
+                    </div>
+                </div>
+
+                <div class="subject">
+                    <h2 class="h2 required">재학기간</h2>
+                    <div class="row in-span no-margin"> <label class="span per35 date"> <input type="text" data-dates="highschoolDate:YM  highschool graduationCriteriaDate" name="highschool.entranceDate" title="입학일" value=""  class="text date start" placeholder="입학일" data-rel-target="highschool"> <input type="text" data-dates="highschoolDate:END" name="highschool.graduationDate" title="졸업일" value=""  class="text date end" placeholder="졸업일" data-rel-target="highschool"> </label>
+                        <div class="span per65 msg"><strong>잡다 지원서 저장을 위한</strong> 임시저장 페이지입니다.</div>
+                    </div>
+                </div>
+            </section>
+            <section class="writeResume" data-code="141">
+                <header>
+                    <h1 class="h1">대학교</h1>
+                </header>
+                <div class="wrapCollege" data-wrap="collegeLoop" data-type="college" data-required="true" data-dateinputformat="YM">
+                    <div class="wrapSubject" data-loop="college" data-index="0">
+                        <div class="subject" data-code="141"> <input type="hidden" name="college[0].academyActivitySn" value="">
+                            <h2 class="h2 required">학위구분</h2>
+                            <div class="row in-span no-margin">
+                                <div class="span per100 radio" data-rel-id="college[0]"> <label><input type="radio" name="college[0].degreeTypeCode" value="40" ><span class="label">전문학사</span></label> <label><input type="radio" name="college[0].degreeTypeCode" value="50" ><span class="label">학사</span></label> </div>
+                            </div>
+                        </div>
+                        <div class="subject">
+                            <h2 class="h2 required">학교관련</h2>
+                            <div class="row in-span no-margin"> <label class="span per15 title ">학교명</label>
+                                <div class="span per80 middle-set">
+                                    <div class="search">
+                                        <label>
+                                        <input type="search" class="text" data-type="college" data-rel-target="college[0]" maxlength="256" placeholder="키워드 입력 후 &quot;Enter&quot;로 검색"><span class="label" style="background: #f00">학교(저장X)</span><!--<span class="label">학교검색</span>--></label>
+                                        <div class="searchResult"></div>
+                                    </div>
+                                    <input type="hidden" name="college[0].academyName" maxlength="256" value=""  disabled><span class="searchResultName"></span> <input type="text" name="college[0].academyCode" value="" class="hidden" data-rel-target="college[0]"  title="학교 코드" disabled>
+                                </div>
+                            </div>
+                            <div class="row in-span half-margin"><label class="span per15 title ">학교소재지</label><label class="span per25 select"><select name="college[0].locationCode" data-rel-target="college[0]"  >
+                                <option value="">학교소재지</option>
+                                <option value="101">서울</option>
+                                <option value="102">부산</option>
+                                <option value="103">대구</option>
+                                <option value="104">인천</option>
+                                <option value="105">광주</option>
+                                <option value="106">대전</option>
+                                <option value="107">울산</option>
+                                <option value="108">경기</option>
+                                <option value="109">강원</option>
+                                <option value="110">충북</option>
+                                <option value="111">충남</option>
+                                <option value="112">전북</option>
+                                <option value="113">전남</option>
+                                <option value="114">경북</option>
+                                <option value="115">경남</option>
+                                <option value="116">제주</option>
+                                <option value="117">세종</option>
+                                <option value="201">미국</option>
+                                <option value="202">일본</option>
+                                <option value="203">프랑스</option>
+                                <option value="204">호주</option>
+                                <option value="205">중국</option>
+                                <option value="206">영국</option>
+                                <option value="207">독일</option>
+                                <option value="208">캐나다</option>
+                                <option value="209">스웨덴</option>
+                                <option value="210">핀란드</option>
+                                <option value="211">이탈리아</option>
+                                <option value="212">러시아</option>
+                                <option value="213">대만</option>
+                                <option value="214">인도네시아</option>
+                                <option value="215">말레이시아</option>
+                                <option value="216">방글라데시</option>
+                                <option value="217">싱가폴</option>
+                                <option value="218">인도</option>
+                                <option value="219">필리핀</option>
+                                <option value="220">홍콩</option>
+                                <option value="221">베트남</option>
+                                <option value="222">뉴질랜드</option>
+                                <option value="223">오세아니아</option>
+                                <option value="224">중남미</option>
+                                <option value="225">아프리카</option>
+                                <option value="901">기타 아시아</option>
+                                <option value="902">기타 유럽</option>
+                                <option value="999">기타 지역</option>
+                            </select></label><label class="span per20 title devider ">본교/분교</label>
+                                <div class="span per20 radio"><label><input type="radio" name="college[0].headOrBranch" value="01" data-rel-target="college[0]" ><span class="label">본교</span></label><label><input type="radio" name="college[0].headOrBranch" value="02" data-rel-target="college[0]" ><span class="label">분교</span></label></div>
+                            </div>
+                        </div>
+                        <div class="subject">
+                            <h2 class="h2 required">재학기간</h2>
+                            <div class="row in-span no-margin"> <label class="span per35 date"> <input type="text" data-dates="college[0].date:YM college graduationCriteriaDate" name="college[0].entranceDate" value="" data-rel-target="college[0]"  class="text date start" placeholder="입학일" > <input type="text" data-dates="college[0].date:END" name="college[0].graduationDate" value="" data-rel-target="college[0]"  class="text date end" placeholder="졸업일" > </label>
+                                <div class="span per65 msg"><strong>2024.07.16</strong> 이전 졸업(예정)만 최종학력으로 인정</div>
+                            </div>
+                        </div>
+                        <div class="subject">
+                            <h2 class="h2 required">입학구분</h2>
+                            <div class="row in-span no-margin">
+                                <div class="span per100 radio"> <label><input type="radio" name="college[0].entranceTypeCode" value="01" data-rel-target="college[0]"  ><span class="label">입학</span></label> <label><input type="radio" name="college[0].entranceTypeCode" value="02" data-rel-target="college[0]"  ><span class="label">편입</span></label> </div>
+                            </div>
+                        </div>
+                        <div class="subject">
+                            <h2 class="h2 required">졸업구분</h2>
+                            <div class="row in-span no-margin">
+                                <div class="span per100 radio"> <label><input type="radio" name="college[0].graduationTypeCode" value="01" data-rel-target="college[0]"  ><span class="label">졸업</span></label> <label><input type="radio" name="college[0].graduationTypeCode" value="02" data-rel-target="college[0]"  ><span class="label">졸업예정</span></label> <label><input type="radio" name="college[0].graduationTypeCode" value="04" data-rel-target="college[0]"  ><span class="label">중퇴</span></label> <label><input type="radio" name="college[0].graduationTypeCode" value="05" data-rel-target="college[0]"  ><span class="label">휴학</span></label> <label><input type="radio" name="college[0].graduationTypeCode" value="07" data-rel-target="college[0]"  ><span class="label">재학</span></label> </div>
+                            </div>
+                        </div>
+                        <div class="subject">
+                            <h2 class="h2 required">학과/전공</h2>
+                            <div class="row in-span no-margin"> <label class="span per10 title ">학과계열</label> <label class="span per35 select"><select name="college[0].collegeCategoryCode" data-rel-target="college[0]"   >
+                                <option value="">학과계열을 선택하세요.</option>
+                                <option value="01">가정</option>
+                                <option value="02">간호</option>
+                                <option value="03">건축</option>
+                                <option value="04">공학</option>
+                                <option value="05">농림</option>
+                                <option value="06">사범</option>
+                                <option value="07">법정</option>
+                                <option value="08">사회</option>
+                                <option value="09">상경</option>
+                                <option value="10">신학</option>
+                                <option value="11">어문</option>
+                                <option value="12">예체</option>
+                                <option value="13">의학</option>
+                                <option value="14">인문</option>
+                                <option value="15">자연</option>
+                                <option value="16">부동산</option>
+                                <option value="17">축수산</option>
+                                <option value="18">보건</option>
+                                <option value="99">기타</option>
+                            </select></label></div>
+                            <div class="subject" data-wrap="major">
+                                <div class="row loop" data-loop="collegeMajor" data-index="0">
+                                    <div class="row in-span no-margin">
+                                        <div class="span per20 btn "> 전공<div class="wrapBtn"><button type="button" class="btn btn-icon btn-add" data-button="add" data-rel-target="college[0]" ></button><button type="button" class="btn btn-icon btn-remove" data-button="remove" data-rel-target="college[0]" ></button><button type="button" class="btn btn-icon btn-reset" data-button="reset" data-rel-target="college[0]" ></button></div>
+                                        </div>
+                                        <div class="span per80">
+                                            <div class="row in-span no-margin">
+                                                <div class="span per100 middle-set">
+                                                    <div class="search"><label><input type="search" class="text" data-type="major" data-rel-target="college[0]"  maxlength="128" placeholder="키워드 입력 후 &quot;Enter&quot;로 검색"><span class="label" style="background: #f00">전공검색(X)</span></label>
+                                                        <div class="searchResult"></div>
+                                                    </div> <input type="hidden" name="college[0].collegeMajor[0].collegeMajorSn" value=""  disabled> <input type="hidden" name="college[0].collegeMajor[0].majorName" value="" maxlength="128" disabled><span class="searchResultName"></span> <input type="text" name="college[0].collegeMajor[0].majorCode" value="" data-rel-target="college[0]" data-rel-id="college[0].collegeMajor[0]"  class="hidden"  title="전공코드" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="row in-span half-margin">
+                                                <div class="span per40 radio"> <label><input type="radio" name="college[0].collegeMajor[0].majorTypeCode" value="01" data-rel-target="college[0].collegeMajor[0]"  ><span class="label">주전공</span></label> <label><input type="radio" name="college[0].collegeMajor[0].majorTypeCode" value="02" data-rel-target="college[0].collegeMajor[0]"  ><span class="label">복수전공</span></label> <label><input type="radio" name="college[0].collegeMajor[0].majorTypeCode" value="03" data-rel-target="college[0].collegeMajor[0]"  ><span class="label">부전공</span></label> </div> <label class="span per35 select"><select name="college[0].collegeMajor[0].majorCategoryCode" data-rel-target="college[0].collegeMajor[0]"   data-rel-id="college[0].collegeMajor[0].majorCategoryCode" data-rel-type="with" data-rel-value="125,126,127,128">
+                                                <option value="">전공계열을 선택하세요.</option>
+                                                <option value="101">인문계열_(언어ㆍ문학)</option>
+                                                <option value="102">인문계열_(인문과학)</option>
+                                                <option value="103">사회계열_(경영·경제)</option>
+                                                <option value="104">사회계열_(법률)</option>
+                                                <option value="105">사회계열_(사회과학 )</option>
+                                                <option value="136">사회계열_(회계 · 금융)</option>
+                                                <option value="106">교육계열_(교육일반 )</option>
+                                                <option value="107">교육계열_(유아교육 )</option>
+                                                <option value="108">교육계열_(특수교육)</option>
+                                                <option value="109">교육계열_(초등교육)</option>
+                                                <option value="110">교육계열_(중등교육 )</option>
+                                                <option value="111">공학계열_(건축)</option>
+                                                <option value="112">공학계열_(토목·도시)</option>
+                                                <option value="113">공학계열_(교통·운송)</option>
+                                                <option value="114">공학계열_(기계·금속)</option>
+                                                <option value="115">공학계열_(전기·전자)</option>
+                                                <option value="116">공학계열_(정밀·에너지)</option>
+                                                <option value="117">공학계열_(소재·재료)</option>
+                                                <option value="118">공학계열_(컴퓨터·통신)</option>
+                                                <option value="119">공학계열_(산업 )</option>
+                                                <option value="120">공학계열_(화공 )</option>
+                                                <option value="139">공학계열_(환경)</option>
+                                                <option value="121">자연계열_(농림·수산)</option>
+                                                <option value="122">자연계열_(생물·화학·환경)</option>
+                                                <option value="123">자연계열_(생활과학 )</option>
+                                                <option value="124">자연계열_(수학·물리·천문·지리)</option>
+                                                <option value="137">자연계열_(통계)</option>
+                                                <option value="138">자연계열_(교통.운송)</option>
+                                                <option value="125">의약계열_(의료 )</option>
+                                                <option value="126">의약계열_(간호 )</option>
+                                                <option value="127">의약계열_(약학 )</option>
+                                                <option value="128">의약계열_(치료·보건)</option>
+                                                <option value="129">예체능계열_(디자인)</option>
+                                                <option value="130">예체능계열_(응용예술)</option>
+                                                <option value="131">예체능계열_(무용·체육)</option>
+                                                <option value="132">예체능계열_(미술·조형)</option>
+                                                <option value="133">예체능계열_(연극·영화)</option>
+                                                <option value="134">예체능계열_(음악 )</option>
+                                                <option value="135">기타</option>
+                                            </select></label>
+                                            </div>
+                                            <div class="row in-span half-margin">
+                                                <div class="span per25 radio"> <label><input type="radio" name="college[0].collegeMajor[0].dayOrNight" value="01" data-rel-target="college[0].collegeMajor[0]"  ><span class="label">주간</span></label> <label><input type="radio" name="college[0].collegeMajor[0].dayOrNight" value="02" data-rel-target="college[0].collegeMajor[0]"  ><span class="label">야간</span></label> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="subject">
+                            <h2 class="h2 required">성적</h2>
+                            <div class="row in-span no-margin"> <label class="span per10 title ">평점</label>
+                                <div class="span per90 middle-set"> <input type="number" name="college[0].score" value="" data-rel-id="college[0].perfectScore" data-rel-target="college[0]"   class="text" title="평점" size="8" placeholder="평점" data-limit="decimal(6,3)" step="0.001" min="0"> <span style="margin:0px 5px;">/</span> <label class="select"><select name="college[0].perfectScore" data-rel-target="college[0].perfectScore"  >
+                                    <option value="">만점기준</option>
+                                    <option value="3.0">3.0</option>
+                                    <option value="3.5">3.5</option>
+                                    <option value="4.0">4.0</option>
+                                    <option value="4.3">4.3</option>
+                                    <option value="4.5">4.5</option>
+                                    <option value="5.0">5.0</option>
+                                    <option value="7.0">7.0</option>
+                                    <option value="100">100</option>
+                                </select></label> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="collegeBtnSet clearfix"> <button type="button" class="btnRemoveCollege" data-button="removeCollege" data-loopname="college">삭제</button> <button type="button" class="btnAddCollege" data-button="addCollege" data-loopname="college">추가</button></div>-->
+            </section>
+            <section class="writeResume" data-code="142">
+                <header>
+                    <h1 class="h1">대학원</h1>
+                </header>
+                <div class="wrapCollege" data-wrap="collegeLoop" data-type="graduateSchool" data-required="false" data-dateinputformat="YM">
+                    <div class="wrapSubject" data-loop="graduateSchool" data-index="0">
+                        <div class="subject" data-code="142"> <input type="hidden" name="graduateSchool[0].academyActivitySn" value="">
+                            <h2 class="h2 ">학위구분</h2>
+                            <div class="row in-span no-margin">
+                                <div class="span per100 radio" data-rel-id="graduateSchool[0]"> <label><input type="radio" name="graduateSchool[0].degreeTypeCode" value="61"><span class="label">석사수료</span></label> <label><input type="radio" name="graduateSchool[0].degreeTypeCode" value="62"><span class="label">석사</span></label> <label><input type="radio" name="graduateSchool[0].degreeTypeCode" value="71"><span class="label">박사수료</span></label> <label><input type="radio" name="graduateSchool[0].degreeTypeCode" value="72"><span class="label">박사</span></label> </div>
+                            </div>
+                        </div>
+                        <div class="subject">
+                            <h2 class="h2 required">학교관련</h2>
+                            <div class="row in-span no-margin"> <label class="span per15 title ">학교명</label>
+                                <div class="span per80 middle-set">
+                                    <div class="search">
+                                        <label>
+                                            <input type="search" class="text" data-type="college" data-rel-target="graduateSchool[0]"  maxlength="256" placeholder="키워드 입력 후 &quot;Enter&quot;로 검색"><span class="label" style="background: #f00">학교(저장X)</span><!--<span class="label">학교검색</span>--></label>
+                                        <div class="searchResult"></div>
+                                    </div> <input type="hidden" name="graduateSchool[0].academyName" maxlength="256" value="" disabled><span class="searchResultName"></span> <input type="text" name="graduateSchool[0].academyCode" value="" class="hidden" data-rel-target="graduateSchool[0]"   title="학교 코드" disabled>
+                                </div>
+                            </div>
+                            <div class="row in-span half-margin"><label class="span per15 title ">학교소재지</label><label class="span per25 select"><select name="graduateSchool[0].locationCode" data-rel-target="graduateSchool[0]">
+                                <option value="">학교소재지</option>
+                                <option value="101">서울</option>
+                                <option value="102">부산</option>
+                                <option value="103">대구</option>
+                                <option value="104">인천</option>
+                                <option value="105">광주</option>
+                                <option value="106">대전</option>
+                                <option value="107">울산</option>
+                                <option value="108">경기</option>
+                                <option value="109">강원</option>
+                                <option value="110">충북</option>
+                                <option value="111">충남</option>
+                                <option value="112">전북</option>
+                                <option value="113">전남</option>
+                                <option value="114">경북</option>
+                                <option value="115">경남</option>
+                                <option value="116">제주</option>
+                                <option value="117">세종</option>
+                                <option value="201">미국</option>
+                                <option value="202">일본</option>
+                                <option value="203">프랑스</option>
+                                <option value="204">호주</option>
+                                <option value="205">중국</option>
+                                <option value="206">영국</option>
+                                <option value="207">독일</option>
+                                <option value="208">캐나다</option>
+                                <option value="209">스웨덴</option>
+                                <option value="210">핀란드</option>
+                                <option value="211">이탈리아</option>
+                                <option value="212">러시아</option>
+                                <option value="213">대만</option>
+                                <option value="214">인도네시아</option>
+                                <option value="215">말레이시아</option>
+                                <option value="216">방글라데시</option>
+                                <option value="217">싱가폴</option>
+                                <option value="218">인도</option>
+                                <option value="219">필리핀</option>
+                                <option value="220">홍콩</option>
+                                <option value="221">베트남</option>
+                                <option value="222">뉴질랜드</option>
+                                <option value="223">오세아니아</option>
+                                <option value="224">중남미</option>
+                                <option value="225">아프리카</option>
+                                <option value="901">기타 아시아</option>
+                                <option value="902">기타 유럽</option>
+                                <option value="999">기타 지역</option>
+                            </select></label><label class="span per20 title devider ">본교/분교</label>
+                                <div class="span per20 radio"><label><input type="radio" name="graduateSchool[0].headOrBranch" value="01" data-rel-target="graduateSchool[0]" ><span class="label">본교</span></label><label><input type="radio" name="graduateSchool[0].headOrBranch" value="02" data-rel-target="graduateSchool[0]" ><span class="label">분교</span></label></div>
+                            </div>
+                        </div>
+                        <div class="subject">
+                            <h2 class="h2 required">재학기간</h2>
+                            <div class="row in-span no-margin"> <label class="span per35 date"> <input type="text" data-dates="graduateSchool[0].date:YM college graduationCriteriaDate" name="graduateSchool[0].entranceDate" value="" data-rel-target="graduateSchool[0]"  class="text date start" placeholder="입학일" > <input type="text" data-dates="graduateSchool[0].date:END" name="graduateSchool[0].graduationDate" value="" data-rel-target="graduateSchool[0]"  class="text date end" placeholder="졸업일" > </label>
+                                <div class="span per65 msg"><strong>2024.07.16</strong> 이전 졸업(예정)만 최종학력으로 인정</div>
+                            </div>
+                        </div>
+                        <div class="subject">
+                            <h2 class="h2 required">졸업구분</h2>
+                            <div class="row in-span no-margin">
+                                <div class="span per100 radio"> <label><input type="radio" name="graduateSchool[0].graduationTypeCode" value="01" data-rel-target="graduateSchool[0]"  ><span class="label">졸업</span></label> <label><input type="radio" name="graduateSchool[0].graduationTypeCode" value="02" data-rel-target="graduateSchool[0]"  ><span class="label">졸업예정</span></label> <label><input type="radio" name="graduateSchool[0].graduationTypeCode" value="04" data-rel-target="graduateSchool[0]"  ><span class="label">중퇴</span></label> <label><input type="radio" name="graduateSchool[0].graduationTypeCode" value="05" data-rel-target="graduateSchool[0]"  ><span class="label">휴학</span></label> <label><input type="radio" name="graduateSchool[0].graduationTypeCode" value="07" data-rel-target="graduateSchool[0]"  ><span class="label">재학</span></label> </div>
+                            </div>
+                        </div>
+                        <div class="subject">
+                            <h2 class="h2 required">학과/전공</h2>
+                            <div class="row in-span no-margin"> <label class="span per10 title ">학과계열</label> <label class="span per35 select"><select name="graduateSchool[0].collegeCategoryCode" data-rel-target="graduateSchool[0]"  >
+                                <option value="">학과계열을 선택하세요.</option>
+                                <option value="01">가정</option>
+                                <option value="02">간호</option>
+                                <option value="03">건축</option>
+                                <option value="04">공학</option>
+                                <option value="05">농림</option>
+                                <option value="06">사범</option>
+                                <option value="07">법정</option>
+                                <option value="08">사회</option>
+                                <option value="09">상경</option>
+                                <option value="10">신학</option>
+                                <option value="11">어문</option>
+                                <option value="12">예체</option>
+                                <option value="13">의학</option>
+                                <option value="14">인문</option>
+                                <option value="15">자연</option>
+                                <option value="16">부동산</option>
+                                <option value="17">축수산</option>
+                                <option value="18">보건</option>
+                                <option value="99">기타</option>
+                            </select></label></div>
+                            <div class="subject" data-wrap="major">
+                                <div class="row loop" data-loop="collegeMajor" data-index="0">
+                                    <div class="row in-span no-margin">
+                                        <div class="span per20 btn "> 전공<div class="wrapBtn"><button type="button" class="btn btn-icon btn-add" data-button="add" data-rel-target="graduateSchool[0]" ></button><button type="button" class="btn btn-icon btn-remove" data-button="remove" data-rel-target="graduateSchool[0]" ></button><button type="button" class="btn btn-icon btn-reset" data-button="reset" data-rel-target="graduateSchool[0]" ></button></div>
+                                        </div>
+                                        <div class="span per80">
+                                            <div class="row in-span no-margin">
+                                                <div class="span per100 middle-set">
+                                                    <div class="search"><label><input type="search" class="text" data-type="major" data-rel-target="graduateSchool[0]"  maxlength="128" placeholder="키워드 입력 후 &quot;Enter&quot;로 검색"><span class="label" style="background: #f00">전공검색(X)</span></label>
+                                                        <div class="searchResult"></div>
+                                                    </div> <input type="hidden" name="graduateSchool[0].collegeMajor[0].collegeMajorSn" value=""> <input type="hidden" name="graduateSchool[0].collegeMajor[0].majorName" value="" maxlength="128"><span class="searchResultName"></span> <input type="text" name="graduateSchool[0].collegeMajor[0].majorCode" value="" data-rel-target="graduateSchool[0]" data-rel-id="graduateSchool[0].collegeMajor[0]"  class="hidden"  title="전공코드">
+                                                </div>
+                                            </div>
+                                            <div class="row in-span half-margin">
+                                                <div class="span per40 radio"> <label><input type="radio" name="graduateSchool[0].collegeMajor[0].majorTypeCode" value="01" data-rel-target="graduateSchool[0].collegeMajor[0]"  ><span class="label">주전공</span></label> <label><input type="radio" name="graduateSchool[0].collegeMajor[0].majorTypeCode" value="02" data-rel-target="graduateSchool[0].collegeMajor[0]"  ><span class="label">복수전공</span></label> <label><input type="radio" name="graduateSchool[0].collegeMajor[0].majorTypeCode" value="03" data-rel-target="graduateSchool[0].collegeMajor[0]"  ><span class="label">부전공</span></label> </div> <label class="span per35 select"><select name="graduateSchool[0].collegeMajor[0].majorCategoryCode" data-rel-target="graduateSchool[0].collegeMajor[0]"   data-rel-id="graduateSchool[0].collegeMajor[0].majorCategoryCode" data-rel-type="with" data-rel-value="125,126,127,128">
+                                                <option value="">전공계열을 선택하세요.</option>
+                                                <option value="101">인문계열_(언어ㆍ문학)</option>
+                                                <option value="102">인문계열_(인문과학)</option>
+                                                <option value="103">사회계열_(경영·경제)</option>
+                                                <option value="104">사회계열_(법률)</option>
+                                                <option value="105">사회계열_(사회과학 )</option>
+                                                <option value="136">사회계열_(회계 · 금융)</option>
+                                                <option value="106">교육계열_(교육일반 )</option>
+                                                <option value="107">교육계열_(유아교육 )</option>
+                                                <option value="108">교육계열_(특수교육)</option>
+                                                <option value="109">교육계열_(초등교육)</option>
+                                                <option value="110">교육계열_(중등교육 )</option>
+                                                <option value="111">공학계열_(건축)</option>
+                                                <option value="112">공학계열_(토목·도시)</option>
+                                                <option value="113">공학계열_(교통·운송)</option>
+                                                <option value="114">공학계열_(기계·금속)</option>
+                                                <option value="115">공학계열_(전기·전자)</option>
+                                                <option value="116">공학계열_(정밀·에너지)</option>
+                                                <option value="117">공학계열_(소재·재료)</option>
+                                                <option value="118">공학계열_(컴퓨터·통신)</option>
+                                                <option value="119">공학계열_(산업 )</option>
+                                                <option value="120">공학계열_(화공 )</option>
+                                                <option value="139">공학계열_(환경)</option>
+                                                <option value="121">자연계열_(농림·수산)</option>
+                                                <option value="122">자연계열_(생물·화학·환경)</option>
+                                                <option value="123">자연계열_(생활과학 )</option>
+                                                <option value="124">자연계열_(수학·물리·천문·지리)</option>
+                                                <option value="137">자연계열_(통계)</option>
+                                                <option value="138">자연계열_(교통.운송)</option>
+                                                <option value="125">의약계열_(의료 )</option>
+                                                <option value="126">의약계열_(간호 )</option>
+                                                <option value="127">의약계열_(약학 )</option>
+                                                <option value="128">의약계열_(치료·보건)</option>
+                                                <option value="129">예체능계열_(디자인)</option>
+                                                <option value="130">예체능계열_(응용예술)</option>
+                                                <option value="131">예체능계열_(무용·체육)</option>
+                                                <option value="132">예체능계열_(미술·조형)</option>
+                                                <option value="133">예체능계열_(연극·영화)</option>
+                                                <option value="134">예체능계열_(음악 )</option>
+                                                <option value="135">기타</option>
+                                            </select></label>
+                                            </div>
+                                            <div class="row in-span half-margin">
+                                                <div class="span per25 radio"> <label><input type="radio" name="graduateSchool[0].collegeMajor[0].dayOrNight" value="01" data-rel-target="graduateSchool[0].collegeMajor[0]"  ><span class="label">주간</span></label> <label><input type="radio" name="graduateSchool[0].collegeMajor[0].dayOrNight" value="02" data-rel-target="graduateSchool[0].collegeMajor[0]"  ><span class="label">야간</span></label> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="subject">
+                            <h2 class="h2 required">성적</h2>
+                            <div class="row in-span no-margin"> <label class="span per10 title ">평점</label>
+                                <div class="span per90 middle-set"> <input type="number" name="graduateSchool[0].score" value="" data-rel-id="graduateSchool[0].perfectScore" data-rel-target="graduateSchool[0]"   class="text" title="평점" size="8" placeholder="평점" data-limit="decimal(6,3)" step="0.001" min="0"> <span style="margin:0px 5px;">/</span> <label class="select"><select name="graduateSchool[0].perfectScore" data-rel-target="graduateSchool[0].perfectScore"  >
+                                    <option value="">만점기준</option>
+                                    <option value="3.0">3.0</option>
+                                    <option value="3.5">3.5</option>
+                                    <option value="4.0">4.0</option>
+                                    <option value="4.3">4.3</option>
+                                    <option value="4.5">4.5</option>
+                                    <option value="5.0">5.0</option>
+                                    <option value="7.0">7.0</option>
+                                    <option value="100">100</option>
+                                </select></label> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="collegeBtnSet clearfix"> <button type="button" class="btnRemoveCollege" data-button="removeCollege" data-loopname="graduateSchool">삭제</button> <button type="button" class="btnAddCollege" data-button="addCollege" data-loopname="graduateSchool">추가</button></div>-->
+            </section>
+<!--            <section class="writeResume" data-code="14">
+                <header>
+                    <h1 class="h1">학력사항 추가</h1>
+                </header>
+            </section>-->
+            <section class="writeResume" data-code="16">
+                <header>
+                    <h1 class="h1">경력사항</h1>
+                </header>
+                <div class="subject" data-wrap="career" data-code="153" data-type="career">
+                    <h2 class="h2 required">직장경력</h2>
+                    <div class="row loop" data-loop="career" data-index="0">
+                        <div class="row in-span no-margin">
+                            <div class="span per20 btn"> <label class="title ">고용형태</label>
+                                <div class="wrapBtn"><button type="button" class="btn btn-icon btn-add" data-button="add"></button><button type="button" class="btn btn-icon btn-remove" data-button="remove"></button><button type="button" class="btn btn-icon btn-reset" data-button="reset"></button></div>
+                            </div> <label class="span per25 select"><select name="career[0].careerCriteriaCodeSn" data-rel-id="career[0]" >
+                            <option value="">고용형태를 선택하세요.</option>
+                            <option value="498298">임원</option>
+                            <option value="9610">정규직</option>
+                            <option value="9611">계약직</option>
+                            <option value="9612">파견직</option>
+                            <option value="9613">프리랜서</option>
+                            <option value="9614">개인사업</option>
+                            <option value="9615">병역특례</option>
+                            <option value="9616">인턴</option>
+                            <option value="9617">아르바이트</option>
+                            <option value="9618">기타</option>
+                        </select></label>
+                        </div>
+                        <div class="row in-span half-margin"><label class="span per20 title ">회사명</label>
+                            <div class="span per40"><input type="text" maxlength="128" name="career[0].company" value="" title="회사명" data-rel-target="career[0]"  class="text" placeholder="회사명을 입력하세요." ></div>
+                        </div>
+                        <div class="row in-span half-margin"> <label class="span per20 title ">근무기간</label>
+                            <div class="span per20 radio" data-rel-id="career[0].workingStatusCode" data-rel-type="with" data-rel-value="LEAVE"> <label><input type="radio" value="WORK" name="career[0].workingStatusCode" data-rel-target="career[0]"  ><span class="label">재직중</span></label> <label><input type="radio" value="LEAVE" name="career[0].workingStatusCode" data-rel-target="career[0]"  ><span class="label">퇴사</span></label> </div> <label class="span per5 devider title"></label> <label class="span per35 date"> <input type="text" data-rel-target="career[0]" data-dates="career[0].careerDate:YMD forbiddenAfterToday" name="career[0].entranceDate" value=""  class="text date start"  title="시작일"> <input type="text" data-rel-target="career[0].workingStatusCode" data-dates="career[0].careerDate:END forbiddenAfterToday" name="career[0].leavingDate"  value="" class="text date end"  title="종료일"> </label>
+                        </div>
+                        <div class="row in-span half-margin"><label class="span per20 title ">부서</label>
+                            <div class="span per40"><input type="text" maxlength="128" name="career[0].department" value="" data-rel-target="career[0]"  class="text" placeholder="부서명을 입력하세요."  title="부서명"></div><label class="span title devider per20 ">직급</label>
+                            <div class="span per20"><input type="text" maxlength="64" name="career[0].position" value="" data-rel-target="career[0]"  class="text"  title="직급명"></div>
+                        </div>
+                        <div class="row in-span half-margin"> <label class="span per20 title ">담당업무</label>
+                            <div class="span per80"><input type="text" maxlength="216" name="career[0].assignedTask" value="" data-rel-target="career[0]"  class="text" placeholder="담당업무를 입력하세요."  title="담당업무"></div>
+                        </div>
+                        <div class="row in-span half-margin"><label class="span per20 title ">연봉</label><span class="span per20 label money"><input max="2147483648" type="number" name="career[0].salary" value="" data-rel-target="career[0]"  class="text"  title="연봉"></span></div>
+                        <div class="row in-span half-margin"> <label class="span per20 title ">퇴직사유</label>
+                            <div class="span per80"><input type="text" maxlength="512" name="career[0].retirementReason" value="" data-rel-target="career[0]"  class="text" placeholder="퇴직사유를 입력하세요."  title="퇴직사유"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="subject">
+                    <h2 class="h2 hasTitle experiencerequired">경험 및 경력기술서</h2>
+                    <div class="row in-span no-margin">
+                        <div class="span per100 title required"><span class="title"></span><span></span></div>
+                        <div class="span per100"> <textarea data-maxlength="" data-minlength="" name="experienceBuilder.textInput" rows="5" class="textarea"  maxlength="20000" minlength="" title="추가질문 답변"></textarea>
+                            <div class="pull-right limitLength"><b>0</b></div>
+                        </div> <input type="hidden" name="experienceBuilder.resumeBuilderSn" value="1380054">
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="wrapSessionArea">
+            <div id="sessionArea" class="sessionArea">
+                <div class="clock">
+                    <div class="point"></div>
+                </div>
+                <dl>
+                    <dt class="login">실제 지원페이지가 아닌 임시저장 페이지 입니다.</dt>
+                </dl>
+                <div class="btnGroup"><button type="button" data-type="tempSave" class="btn btn-great btn-ng" id="saveResumeButton" onclick="collectAndSaveFormData()">임시저장</button><button type="submit" data-step="2" class="btn btn-great" id="nextResumeButton" style="display: inline-block;" onclick="collectAndSaveFormData()">다음</button></div>
+            </div>
+        </div>
+        <div id="guideTooltip" class="sessionTooltip hide"></div>
+    </form>
+    <script src="../js/custom/school.js"></script>
+</div>
+</body>
+
+</html>
