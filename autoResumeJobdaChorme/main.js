@@ -1,7 +1,7 @@
 // 현재 날짜와 시간을 포맷하는 함수
 function getCurrentDateTime() {
-    const now = new Date();
-    return now.toISOString(); // ISO 8601 형식으로 날짜와 시간 반환
+    const now = new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' });
+    return now; // ISO 8601 형식으로 날짜와 시간 반환
 }
 
 // 폼 데이터를 수집하는 함수
