@@ -29,17 +29,22 @@
 
 ## 사용 방법
 
+### 0. 다운로드 
+1. **좌측 상단 code버튼을 누르고 다운로드 클릭**:
+![image](https://github.com/user-attachments/assets/a2392be0-55f2-493e-bd55-49d70cbd5893)
+
+
 ### 1. Chrome 확장 프로그램 등록
 
-1. **확장 프로그램 다운로드**:
-   - `autoResumeJobdaChrome` 폴더를 다운로드합니다.
-
-2. **Chrome 브라우저에서 확장 프로그램 설치**:
+1. **Chrome 브라우저에서 확장 프로그램 설치**:
    - Chrome 브라우저를 열고, 주소창에 `chrome://extensions/`를 입력하여 확장 프로그램 페이지로 이동합니다.
    - 우측 상단의 "압축 해제된 확장 프로그램 로드" 버튼을 클릭합니다.
    - 다운로드한 `autoResumeJobdaChrome` 폴더를 선택하여 업로드합니다. (이때 압축파일이 아닌 폴더를 업로드하셔야 합니다.)
-
 ![Chrome 확장 프로그램 설치](https://github.com/user-attachments/assets/97504e91-ca1a-49b0-8440-b4b38d4bb4dc)
+
+아래와 같이 autoResumeJobdaChrome 해당 폴더 경로로 업로드합니다. 
+![image](https://github.com/user-attachments/assets/80c5caf9-4d1b-4513-9584-fdca357b30f8)
+
 
 ### 2. 이력서 등록
 
@@ -65,6 +70,7 @@
 
 ## 주의사항
 - 이 도구는 개인 사용을 위해 개발되었으므로, 일부 오류가 발생할 수 있습니다.
-- 학교 검색이나 외부 API를 사용하는 기능은 자동완성에서 제외되어 있습니다.
 - 이력서를 등록한 후, 채용 페이지에 데이터가 정확하게 저장되었는지 확인하는 것을 권장합니다.
 - 실제 JOBDA 이력서 사이트의 CSS를 그대로 가져왔지만, 구조적 다름이 존재할 수 있습니다.
+- 학교검색이나 자격증과 같이 외부 API를 사용하는 부분은 자동완성에서 제외되어 있습니다. 실제 지원 사이트는 해당 값을 필수로 입력해야하기에 직접 입력하지 않는다면 나머지 입력 부분도 삭제됩니다.
+![image](https://github.com/user-attachments/assets/7ba61132-dad2-4409-9911-d92dd48f8e4e)
