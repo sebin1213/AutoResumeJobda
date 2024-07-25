@@ -29,6 +29,11 @@
 
 ## 사용 방법
 
+### 0. 다운로드 
+1. **좌측 상단 code버튼을 누르고 다운로드 클릭**:
+![image](https://github.com/user-attachments/assets/a2392be0-55f2-493e-bd55-49d70cbd5893)
+
+
 ### 1. Chrome 확장 프로그램 등록
 
 1. **확장 프로그램 다운로드**:
