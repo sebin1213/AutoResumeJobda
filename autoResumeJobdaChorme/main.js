@@ -79,6 +79,9 @@ async function loadDataFromChromeStorage() {
                     for (const key of Object.keys(stepData)) {
                         const elements = form.elements[key];
                         const match = key.match(/^(\w+)\[(\d+)\]/);
+                        if (!stepData[key]){
+                            continue;
+                        }
 
                         if (!elements && match) {
                             const dataType = match[1];

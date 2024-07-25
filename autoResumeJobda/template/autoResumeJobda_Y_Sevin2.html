@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/infographic.css">
     <script src="../js/jquery-2.1.1.min.js"></script>
     <script src="../js/custom/custom.js"></script>
-    <script src="../js/custom/chromeStorageSave.js"></script>
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -43,7 +42,12 @@
     <form id="frm" method="post" data-step="3" data-type="save" action="autoResumeJobda_Y_Sevin3.html">
         <header id="header">
             <h1 class="recruitNoticeTitle">[이력서 자동완성]</h1>
-            <nav id="tab"><div class=""><button type="submit" data-step="1">기본정보</button></div><div class="active"><button type="submit" data-step="2">학력/연구/경력/NCS</button></div><div class=""><button type="submit" data-step="3">어학/자격/기타</button></div><div class=""><button type="submit" data-step="5">최종제출</button></div></nav>
+            <nav id="tab">
+                <div class=""><button type="submit" data-step="1">기본정보</button></div>
+                <div class="active"><button type="submit" data-step="2">학력/연구/경력/NCS</button></div>
+                <div class=""><button type="submit" data-step="3">어학/자격/기타</button></div>
+                <div class=""><button type="submit" data-step="5">최종제출</button></div>
+            </nav>
         </header>
 
         <div id="wrapResume">
@@ -626,7 +630,6 @@
         </div>
         <div id="guideTooltip" class="sessionTooltip hide"></div>
     </form>
-    <script src="../js/custom/school.js"></script>
 </div>
 </body>
 

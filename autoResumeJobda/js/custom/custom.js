@@ -107,8 +107,36 @@ function collectAndSaveFormData() {
 
     jsonData[step] = data;
     localStorage.setItem('ResumeFormData', JSON.stringify(jsonData));
+}
 
-    console.log(localStorage.getItem('ResumeFormData') || {});
+// DOM에 요소가 추가될 때까지 기다리는 함수
+async function waitForElement(selector) {
+    return new Promise((resolve) => {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (document.querySelector(selector)) {
+                    observer.disconnect();
+                    resolve(document.querySelector(selector));
+                }
+            });
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        // 기존에 요소가 이미 존재하는지 확인하는 코드 추가
+        if (document.querySelector(selector)) {
+            observer.disconnect();
+            resolve(document.querySelector(selector));
+        }
+    });
+}
+
+// 비동기적으로 버튼 클릭 후 DOM이 업데이트될 때까지 기다리기
+async function clickAndWait(addButton, newElementSelector) {
+    if (addButton) {
+        addButton.click();
+        console.log('button click');
+    }
 }
 
 async function loadDataFromChromeStorage() {
@@ -123,6 +151,9 @@ async function loadDataFromChromeStorage() {
                 for (const key of Object.keys(stepData)) {
                     const elements = form.elements[key];
                     const match = key.match(/^(\w+)\[(\d+)\]/);
+                    if (!stepData[key]){
+                        continue;
+                    }
 
                     if (!elements && match) {
                         const dataType = match[1];
@@ -132,9 +163,12 @@ async function loadDataFromChromeStorage() {
                         if (loopContainers.length <= index) {
                             const addButton = loopContainers[loopContainers.length-1].querySelector('[data-button="add"]');
                             await clickAndWait(addButton, `[data-loop="${dataType}"]`);
+                            await waitForElement(`[data-loop="${dataType}"]`);
+                            // 아래 로직은 이미 해당 elements 가 존재할때 동작하기에 예외 추가
+                            form.elements[key].value = stepData[key];
+                            form.elements[key].removeAttribute('disabled');
                         }
                     }
-
                     if (elements instanceof NodeList || Array.isArray(elements)) {
                         elements.forEach((element) => {
                             if (element.value === stepData[key]) {
@@ -152,11 +186,9 @@ async function loadDataFromChromeStorage() {
             }
         }
     }
-
 }
 
 $(document).ready(function() {
-    loadDataFromChromeStorage();
     new ToggleInput('handicap.handicapYn', ['true'], 'select[name="handicap.handicapGradeCode"], select[name="handicap.handicapContentsCode"]');
     new ToggleInput('patriot.patriotYn', ['true'], 'input[name="patriot.patriotNumber"], input[name="patriot.relationship"], select[name="patriot.patriotRate"]');
     new ToggleInput(
@@ -169,10 +201,6 @@ $(document).ready(function() {
         ['01', '02', '03', '04', '05', '06', '07'],
         'select[name="military.militaryBranchCode"], select[name="military.militaryPositionCode"], select[name="military.militaryDischargeCode"], input[name="military.militaryRole"], input[name="military.militaryStartDate"], input[name="military.militaryEndDate"]' // 제어할 input 요소들
     );
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-
 
     new DynamicRowHandler(
         '.subject[data-type="languageSkill"]',
@@ -231,14 +259,14 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     new DynamicRowHandler(
-        '.subject[data-type="college"]',
+        '.wrapSubject[data-loop="college"] .subject[data-wrap="major"]',
         '.row.loop',
         '.btn.btn-icon.btn-add[data-button="add"]',
         '.btn.btn-icon.btn-remove[data-button="remove"]'
     );
 
     new DynamicRowHandler(
-        '.subject[data-type="graduateSchool"]',
+        '.wrapSubject[data-loop="graduateSchool"] .subject[data-wrap="major"]',
         '.row.loop',
         '.btn.btn-icon.btn-add[data-button="add"]',
         '.btn.btn-icon.btn-remove[data-button="remove"]'
@@ -250,4 +278,6 @@ document.addEventListener('DOMContentLoaded', () => {
         '.btn.btn-icon.btn-add[data-button="add"]',
         '.btn.btn-icon.btn-remove[data-button="remove"]'
     );
+
+    loadDataFromChromeStorage();
 });
