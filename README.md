@@ -36,15 +36,14 @@
 
 ### 1. Chrome 확장 프로그램 등록
 
-1. **확장 프로그램 다운로드**:
-   - `autoResumeJobdaChrome` 폴더를 다운로드합니다.
-
-2. **Chrome 브라우저에서 확장 프로그램 설치**:
+1. **Chrome 브라우저에서 확장 프로그램 설치**:
    - Chrome 브라우저를 열고, 주소창에 `chrome://extensions/`를 입력하여 확장 프로그램 페이지로 이동합니다.
    - 우측 상단의 "압축 해제된 확장 프로그램 로드" 버튼을 클릭합니다.
    - 다운로드한 `autoResumeJobdaChrome` 폴더를 선택하여 업로드합니다. (이때 압축파일이 아닌 폴더를 업로드하셔야 합니다.)
-
 ![Chrome 확장 프로그램 설치](https://github.com/user-attachments/assets/97504e91-ca1a-49b0-8440-b4b38d4bb4dc)
+아래와 같이 autoResumeJobdaChrome 해당 폴더 경로로 업로드합니다. 
+![image](https://github.com/user-attachments/assets/80c5caf9-4d1b-4513-9584-fdca357b30f8)
+
 
 ### 2. 이력서 등록
 
