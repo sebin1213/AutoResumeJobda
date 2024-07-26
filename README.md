@@ -2,6 +2,8 @@
 
 **Jobda 이력서 자동완성 확장 프로그램**은 JOBDA에서 제공하는 SaaS를 사용하는 기업의 이력서 작성 과정의 불편함을 지원하기 위해 만든 프로그램입니다. 이 프로그램은 추가적인 소프트웨어 설치 없이 HTML과 브라우저 확장 프로그램만으로 구성되어 있습니다.
 
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fsebin1213%2FAutoResumeJobda&count_bg=%233DC889&title_bg=%23888888&icon=&icon_color=%23E7E7E7&title=Visitors&edge_flat=false)](https://hits.seeyoufarm.com)
+
 ## 사용 가능한 사이트
 
 이 확장 프로그램은 다음의 URL에서 이력서 작성 시 사용할 수 있습니다:
